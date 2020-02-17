@@ -28,3 +28,11 @@ external libraries.
 
 One of the goals is that the set of functions increase over time.
 
+Documentation
+=============
+
+**FunFAN** has been documented with Sphinx, therefore if you download it,
+you can open the documentation (at docs/build/html/index.html) with any web-browser
+
+
+
