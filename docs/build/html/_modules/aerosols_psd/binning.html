@@ -1,0 +1,584 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>aerosols_psd.binning &mdash; FunFAM 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> FunFAM
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../set_functions.html">Set of Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../aerosols-psd.html">Examples aerosols-psd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../myindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">FunFAM</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>aerosols_psd.binning</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for aerosols_psd.binning</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. note::</span>
+<span class="sd">   | **Program name**      : binning.py</span>
+<span class="sd">   | **Author**            : Ramiro Checa-Garcia</span>
+<span class="sd">   | **email**             : rcheca@lsce.ipsl.fr</span>
+<span class="sd">   | **Purpose**           : Functions to perform a binning of a modal based diagnostics</span>
+<span class="sd">   | **Revision History**  :</span>
+<span class="sd">   |   - Jan-2020   v1.0     Initial version. Contact: R.Checa</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="kn">import</span> <span class="nn">aerosols_psd.lognormal</span> <span class="k">as</span> <span class="nn">ln</span> 
+
+
+<div class="viewcode-block" id="total_tendency"><a class="viewcode-back" href="../../api.html#aerosols_psd.binning.total_tendency">[docs]</a><span class="k">def</span> <span class="nf">total_tendency</span><span class="p">(</span><span class="n">tendency_data</span><span class="p">,</span> <span class="n">area</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Estimate the total tendency for a year</span>
+<span class="sd">    assuming a year with 365 days. Inputs are in SI, and outputs are</span>
+<span class="sd">    Tg per year.</span>
+
+
+<span class="sd">    Args:</span>
+<span class="sd">        tendency_data (datarray): Datarray with a tendency field with monthly resolution, and SI units.</span>
+<span class="sd">        area (datarray):          Datarray with the area per grid cell.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tendency (float):         Total tendency per year in Tg.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">tendency_field</span> <span class="o">=</span> <span class="n">tendency_data</span><span class="o">*</span><span class="n">area</span>
+    <span class="n">tendency_month</span> <span class="o">=</span> <span class="n">tendency_field</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">])</span>
+    <span class="n">daysmon</span>        <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+    <span class="n">sec_month</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">k</span> <span class="o">*</span> <span class="mf">86400.</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">daysmon</span><span class="p">])</span>
+    <span class="n">tendency_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">tendency_month</span><span class="p">[</span><span class="n">imon</span><span class="p">]</span><span class="o">*</span><span class="n">sec_month</span><span class="p">[</span><span class="n">imon</span><span class="p">]</span> <span class="k">for</span> <span class="n">imon</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">)])</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">tendency_total</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="mf">1.e9</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span></div>
+
+<span class="k">def</span> <span class="nf">_bins_by_model</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dictionaries with typical bins of several models.</span>
+<span class="sd">    Note that some of them has been extended with one or more additional bins.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dic_bins (dic): prescribed bins of several models.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dic_bins</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1"># Original</span>
+        <span class="s1">&#39;CNRM-dust&#39;</span><span class="p">:</span>   <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>    <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>   <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">],</span> 
+        <span class="s1">&#39;UKESM-dust&#39;</span><span class="p">:</span>  <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0722</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.722</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">7.22</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">72.2</span><span class="p">],</span>
+        <span class="s1">&#39;GOCART-dust&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">],</span>
+         
+        <span class="c1"># Extended</span>
+        <span class="s1">&#39;CNRM-dust-ext&#39;</span><span class="p">:</span>   <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>    <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>   <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">],</span> 
+        <span class="s1">&#39;UKESM-dust-ext&#39;</span><span class="p">:</span>  <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0722</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.722</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">7.22</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">72.2</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">],</span>
+        <span class="s1">&#39;GOCART-dust-ext&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span>
+                            <span class="mf">100.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mf">300.0</span><span class="p">]</span>
+               <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">dic_bins</span>
+
+
+<div class="viewcode-block" id="create_netcdf_2D_bins"><a class="viewcode-back" href="../../api.html#aerosols_psd.binning.create_netcdf_2D_bins">[docs]</a><span class="k">def</span> <span class="nf">create_netcdf_2D_bins</span><span class="p">(</span><span class="n">dic_fractions</span><span class="p">,</span> <span class="n">dic_varname</span><span class="p">,</span> <span class="n">dic_ncnames</span><span class="p">,</span> <span class="n">modes</span><span class="p">,</span> <span class="n">new_bins</span><span class="p">,</span>
+                           <span class="n">dic_files</span><span class="p">,</span>  <span class="n">newvarname</span><span class="p">,</span> <span class="n">ftest</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                           <span class="n">test_info</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a netcdf of a given (lat,lon) diagnostic with values over a set of bins, given the</span>
+<span class="sd">    netcdfs over a set of modes for that diagnostics. The inputs are therefore a set</span>
+<span class="sd">    of netcdfs, one per mode, for a variable X(time, lat, lon) the output is a single netcdf with </span>
+<span class="sd">    X(time, lat, lon, bins).</span>
+
+<span class="sd">    For the calculation we need the expected fractions per bin for each mode. That can be calculated</span>
+<span class="sd">    with other functions provided in aerosols_psd set of functions.</span>
+
+<span class="sd">    With test_info the function can perform test of consistency.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dic_fractions (dict):  Dictionary for fractions per mode for new_bins.</span>
+<span class="sd">        dic_varname (dict):    Dictionary variable-names on each mode diagnostic netcdf.</span>
+<span class="sd">        dic_ncnames (dict):    Dictionary filenames of netcdf files per mode.</span>
+<span class="sd">        modes (list):          Mode names (used as keys for dictionaries above).</span>
+<span class="sd">        new_bins (list):       list or array with the bin limits.</span>
+<span class="sd">        dic_files (dict):      Dictionary with info for output netcdf and base netcdf.</span>
+<span class="sd">        newvarname (str):      New varname with diagnostic per bins.</span>
+<span class="sd">        ftest (file, optional): Save test on opened file ftest. Defaults to None.</span>
+<span class="sd">        save (bool, optional): Save netcdf (if not useful for test).</span>
+<span class="sd">                               Defaults to True.</span>
+<span class="sd">        test_info (dict)     : kind of test, area is a datarray of area_grid if needed by test.</span>
+<span class="sd">                               Defaults to None.</span>
+<span class="sd">                               Example: {kind=&#39;tendeny&#39;, area=datarray, years=[&#39;2000&#39;,&#39;2001&#39;]}</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None. It saves a netcdf.</span>
+
+
+<span class="sd">    .. testcode::</span>
+
+<span class="sd">        # EXAMPLE ================================================================</span>
+<span class="sd">        # Case with: modes named by A and B  -&gt; TWO MODES</span>
+<span class="sd">        #            bins = [0.1, 5.0, 10.0] -&gt; TWO BINS (three limits)</span>
+<span class="sd">        #</span>
+<span class="sd">        modes = [&#39;A&#39;, &#39;B&#39;]</span>
+<span class="sd">        bins  = [0.1, 5.0, 10.0]</span>
+<span class="sd">        dic_fractions = {&#39;A&#39;: [0.2, 0.5, 0.3], &#39;B&#39;: [0.1, 0.8, 0.1]}</span>
+<span class="sd">        dic_varname = {&#39;A&#39;: &#39;emidust&#39;, &#39;B&#39;: &#39;emidust&#39; } </span>
+<span class="sd">        dic_ncnames = {&#39;A&#39;: &#39;emidust_modeA_mymodel.nc&#39;, &#39;B&#39;: &#39;emidust_modeB_mymodel.nc&#39; }</span>
+<span class="sd">        dic_files   = {&#39;basedir&#39;: &#39;/home/myhome/mydirwithnc/&#39;,</span>
+<span class="sd">                       &#39;base_nc&#39;: &#39;my_canonical_netcdf.nc&#39;, </span>
+<span class="sd">                       # base_nc -&gt; It could be any of the dic_ncnames.</span>
+<span class="sd">                       &#39;base_var&#39;: &#39;emidust&#39;,           </span>
+<span class="sd">                       # base_bar -&gt; It will be remove on save of binned file</span>
+<span class="sd">                       &#39;newf_nc&#39;:  &#39;emidust_BINNED.nc&#39;}</span>
+<span class="sd">        newvarname  = &#39;emidust_bins&#39;</span>
+
+<span class="sd">        create_netcdf_emi_bins(dic_fractions, dic_varname, dic_ncnames, modes, new_bins,</span>
+<span class="sd">                               dic_files,  newvarname, ftest=None, save=True)</span>
+<span class="sd">  </span>
+<span class="sd">        # (1) Read &#39;basedir + base_nc&#39; -&gt; copy from here the coords and dimensions of netcdf</span>
+<span class="sd">        # (2) Add the bins dimensions to the given structure</span>
+<span class="sd">        # (3) Open the files of dic_ncnames, for each file open the variable of dic_varname.</span>
+<span class="sd">        # (4) With these files and the dic_fractions estimate the binned 2D file.</span>
+<span class="sd">        # (5) As save=True it saved the netcdf with name newf_nc and variable name newvarname.</span>
+<span class="sd">        #</span>
+<span class="sd">        # For emissions or depositions it is a handy possibility to test consistency. </span>
+
+
+<span class="sd">        f_area = &#39;/home/myhome/mydirwithnc/area_grid.nc&#39;</span>
+<span class="sd">        vararea = xr.open_dataset(f_area)[&#39;area&#39;]</span>
+<span class="sd">        mytest = open(&#39;testing_results.txt&#39;, &#39;w&#39;)</span>
+<span class="sd">        test_emi = {kind=&#39;tendency&#39;, area=vararea}</span>
+
+<span class="sd">        create_netcdf_emi_bins(dic_fractions, dic_varname, dic_ncnames, modes, new_bins,</span>
+<span class="sd">                               dic_files,  newvarname, ftest=mytest, save=True,</span>
+<span class="sd">                               test_info=test_emi)</span>
+
+<span class="sd">        mytest.close()</span>
+
+
+<span class="sd">    .. testcode:</span>
+
+<span class="sd">        # FULL EXAMPLE: Binning of emission fields of 4 dust modes of IPSL climate model.</span>
+
+<span class="sd">        a_sigma = np.array([1.8, 2.0, 1.9, 2.00])</span>
+<span class="sd">        a_mmd   = np.array([1.0, 2.5, 7.0, 22.0])</span>
+<span class="sd">        a_mode  = [&#39;D1&#39;,&#39;CI&#39;,&#39;SI&#39;,&#39;D4&#39;]</span>
+<span class="sd">        new_bins = [0.0001, 0.2, 2.0, 3.6, 6.0, 12.0, 20.0, 30.0, 40.0, 100.0, 200.0, 300.0]</span>
+
+<span class="sd">        dic_fractions = {}</span>
+<span class="sd">        for sigma, mmd, mode in zip(a_sigma, a_mmd, a_mode): </span>
+<span class="sd">            fractions = ln.bin_fractions_lognormal(mmd, sigma, bins=new_bins)</span>
+<span class="sd">            dic_fractions[mode] = fractions</span>
+
+<span class="sd">        dic_varname = {&#39;D1&#39;:&#39;emidustD1&#39;,&#39;CI&#39;:&#39;emidustCI&#39;, &#39;SI&#39;:&#39;emidustSI&#39;,&#39;D4&#39;:&#39;emidustD4&#39;}</span>
+
+<span class="sd">        dic_ncnames = {</span>
+<span class="sd">                    &#39;D1&#39;:&#39;emidustD1_JKmon_IPSL-LMDZORINCAv6_4modes-DRE-global-ade_v1-r1i1p1f1_gr_20090101-20141231-accum.nc&#39;,</span>
+<span class="sd">                    &#39;CI&#39;:&#39;emidustCI_JKmon_IPSL-LMDZORINCAv6_4modes-DRE-global-ade_v1-r1i1p1f1_gr_20090101-20141231-accum.nc&#39;,</span>
+<span class="sd">                    &#39;SI&#39;:&#39;emidustSI_JKmon_IPSL-LMDZORINCAv6_4modes-DRE-global-ade_v1-r1i1p1f1_gr_20090101-20141231-accum.nc&#39;,</span>
+<span class="sd">                    &#39;D4&#39;:&#39;emidustD4_JKmon_IPSL-LMDZORINCAv6_4modes-DRE-global-ade_v1-r1i1p1f1_gr_20090101-20141231-accum.nc&#39;</span>
+<span class="sd">                    }</span>
+
+<span class="sd">        f_area = &#39;tests/area_grid.nc&#39;</span>
+<span class="sd">        vararea = xr.open_dataset(f_area)[&#39;area&#39;]</span>
+
+<span class="sd">        test_emi = {&#39;kind&#39;:&#39;tendency&#39;, &#39;area&#39;:vararea, &#39;years&#39;:[&#39;2010&#39;,&#39;2011&#39;]}</span>
+
+<span class="sd">        ftestemi = open(&#39;check_emission_binning.txt&#39;, &#39;w&#39;)</span>
+
+<span class="sd">        dic_files = {&#39;basedir&#39;: &#39;./tests&#39;,</span>
+<span class="sd">                    &#39;base_nc&#39;: dic_ncnames[&#39;D1&#39;], </span>
+<span class="sd">                    &#39;base_var&#39;: &#39;emidustD1&#39;,           </span>
+<span class="sd">                    &#39;newf_nc&#39;:  &#39;emidust_BINNED.nc&#39;}</span>
+
+<span class="sd">        create_netcdf_2D_bins(dic_fractions, dic_varname, dic_ncnames, a_mode, new_bins,</span>
+<span class="sd">                            dic_files,  &#39;emidust_bin&#39;, ftest=ftestemi, save=True,</span>
+<span class="sd">                            test_info=test_emi)</span>
+
+<span class="sd">    </span>
+<span class="sd">        # OUTPUT of check_emission_binning.txt ===================================</span>
+
+
+<span class="sd">        ============== mode contributions ============================ </span>
+<span class="sd">        ---- 2010 ----------------------- </span>
+<span class="sd">            Contribution mode D1 :    97.58   |&gt; accum =    97.58 </span>
+<span class="sd">            Contribution mode CI :   715.22   |&gt; accum =   812.80 </span>
+<span class="sd">            Contribution mode SI :  5274.96   |&gt; accum =  6087.76 </span>
+<span class="sd">            Contribution mode D4 : 10673.08   |&gt; accum = 16760.84 </span>
+<span class="sd">            *Contribution ALL bins:                       16759.97 </span>
+<span class="sd">        ---- 2011 ----------------------- </span>
+<span class="sd">            Contribution mode D1 :    88.92   |&gt; accum =    88.92 </span>
+<span class="sd">            Contribution mode CI :   651.81   |&gt; accum =   740.73 </span>
+<span class="sd">            Contribution mode SI :  4807.24   |&gt; accum =  5547.97 </span>
+<span class="sd">            Contribution mode D4 :  9726.73   |&gt; accum = 15274.70 </span>
+<span class="sd">            *Contribution ALL bins:                       15273.90 </span>
+<span class="sd">        </span>
+<span class="sd">        ==============  bins contributions ============================ </span>
+<span class="sd">        ---- 2010 ----------------------- </span>
+<span class="sd">            Contribution bin [   0.0,    0.2] :     0.40   |&gt; accum =     0.40 </span>
+<span class="sd">            Contribution bin [   0.2,    2.0] :   490.17   |&gt; accum =   490.57 </span>
+<span class="sd">            Contribution bin [   2.0,    3.6] :   946.51   |&gt; accum =  1437.08 </span>
+<span class="sd">            Contribution bin [   3.6,    6.0] :  1763.44   |&gt; accum =  3200.52 </span>
+<span class="sd">            Contribution bin [   6.0,   12.0] :  3858.86   |&gt; accum =  7059.37 </span>
+<span class="sd">            Contribution bin [  12.0,   20.0] :  3511.50   |&gt; accum = 10570.87 </span>
+<span class="sd">            Contribution bin [  20.0,   30.0] :  2635.21   |&gt; accum = 13206.08 </span>
+<span class="sd">            Contribution bin [  30.0,   40.0] :  1464.50   |&gt; accum = 14670.57 </span>
+<span class="sd">            Contribution bin [  40.0,  100.0] :  1935.78   |&gt; accum = 16606.36 </span>
+<span class="sd">            Contribution bin [ 100.0,  200.0] :   146.74   |&gt; accum = 16753.10 </span>
+<span class="sd">            Contribution bin [ 200.0,  300.0] :     6.87   |&gt; accum = 16759.97 </span>
+<span class="sd">            *Contribution ALL bins:                                   16759.97 </span>
+<span class="sd">        ---- 2011 ----------------------- </span>
+<span class="sd">            Contribution bin [   0.0,    0.2] :     0.36   |&gt; accum =     0.36 </span>
+<span class="sd">            Contribution bin [   0.2,    2.0] :   446.71   |&gt; accum =   447.07 </span>
+<span class="sd">            Contribution bin [   2.0,    3.6] :   862.58   |&gt; accum =  1309.66 </span>
+<span class="sd">            Contribution bin [   3.6,    6.0] :  1607.08   |&gt; accum =  2916.73 </span>
+<span class="sd">            Contribution bin [   6.0,   12.0] :  3516.70   |&gt; accum =  6433.44 </span>
+<span class="sd">            Contribution bin [  12.0,   20.0] :  3200.15   |&gt; accum =  9633.58 </span>
+<span class="sd">            Contribution bin [  20.0,   30.0] :  2401.55   |&gt; accum = 12035.13 </span>
+<span class="sd">            Contribution bin [  30.0,   40.0] :  1334.64   |&gt; accum = 13369.77 </span>
+<span class="sd">            Contribution bin [  40.0,  100.0] :  1764.14   |&gt; accum = 15133.91 </span>
+<span class="sd">            Contribution bin [ 100.0,  200.0] :   133.73   |&gt; accum = 15267.64 </span>
+<span class="sd">            Contribution bin [ 200.0,  300.0] :     6.26   |&gt; accum = 15273.90 </span>
+<span class="sd">            *Contribution ALL bins:                                   15273.90 </span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="n">base_dir</span> <span class="o">=</span> <span class="n">dic_files</span><span class="p">[</span><span class="s1">&#39;basedir&#39;</span><span class="p">]</span>   <span class="c1"># where nc with modes are</span>
+    <span class="n">base_nc</span>  <span class="o">=</span> <span class="n">dic_files</span><span class="p">[</span><span class="s1">&#39;base_nc&#39;</span><span class="p">]</span>   <span class="c1"># names of nc file as base file</span>
+    <span class="n">base_var</span> <span class="o">=</span> <span class="n">dic_files</span><span class="p">[</span><span class="s1">&#39;base_var&#39;</span><span class="p">]</span>  <span class="c1"># varname in base_nc to replicate dims.</span>
+    <span class="n">newf_nc</span>  <span class="o">=</span> <span class="n">dic_files</span><span class="p">[</span><span class="s1">&#39;newf_nc&#39;</span><span class="p">]</span>   <span class="c1"># new filename for netcdf binned</span>
+    
+    <span class="n">bins_nc</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span><span class="n">base_nc</span><span class="p">))</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">bins_nc</span> <span class="o">=</span> <span class="n">bins_nc</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span><span class="s1">&#39;bins_up&#39;</span><span class="p">:</span>   <span class="n">new_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">::]})</span>
+    <span class="n">bins_nc</span> <span class="o">=</span> <span class="n">bins_nc</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span><span class="s1">&#39;bins_down&#39;</span><span class="p">:</span> <span class="n">new_bins</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]})</span>
+
+    <span class="n">dic_nc_modes</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">dic_fullncnames</span> <span class="o">=</span> <span class="p">{</span><span class="n">mode</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span><span class="n">dic_ncnames</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span> <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">:</span>
+        <span class="n">dic_nc_modes</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="o">=</span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">dic_fullncnames</span><span class="p">[</span><span class="n">mode</span><span class="p">])[</span><span class="n">dic_varname</span><span class="p">[</span><span class="n">mode</span><span class="p">]]</span>
+
+    <span class="n">mode_shape</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dic_nc_modes</span><span class="p">[</span><span class="n">modes</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">bins_shape</span> <span class="o">=</span> <span class="n">mode_shape</span><span class="o">+</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_bins</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">var_bin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="o">*</span><span class="n">bins_shape</span><span class="p">,))</span>  <span class="c1"># addpt this with the info of mode_shape</span>
+
+    <span class="k">for</span> <span class="n">kbin</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_bins</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">:</span>
+            <span class="n">var_bin</span><span class="p">[:,:,:,</span><span class="n">kbin</span><span class="p">]</span><span class="o">=</span><span class="n">var_bin</span><span class="p">[:,:,:,</span><span class="n">kbin</span><span class="p">]</span><span class="o">+</span><span class="n">dic_nc_modes</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="o">*</span><span class="n">dic_fractions</span><span class="p">[</span><span class="n">mode</span><span class="p">][</span><span class="n">kbin</span><span class="p">]</span>
+
+    <span class="n">newarray</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">var_bin</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="p">[</span><span class="n">bins_nc</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span><span class="n">bins_nc</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">],</span>
+                                             <span class="n">bins_nc</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span><span class="n">bins_nc</span><span class="p">[</span><span class="s1">&#39;bins_up&#39;</span><span class="p">]],</span>
+                            <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;bins_up&#39;</span><span class="p">])</span>
+
+    <span class="n">bins_nc</span> <span class="o">=</span> <span class="n">bins_nc</span><span class="o">.</span><span class="n">assign</span><span class="p">({</span><span class="n">newvarname</span><span class="p">:</span><span class="n">newarray</span><span class="p">})</span>
+    <span class="n">bins_nc</span> <span class="o">=</span> <span class="n">bins_nc</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">base_var</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">save</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+        <span class="n">bins_nc</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_dir</span><span class="p">,</span><span class="n">newf_nc</span><span class="p">))</span> 
+    
+    <span class="k">if</span> <span class="n">test_info</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">elif</span> <span class="n">test_info</span><span class="p">[</span><span class="s1">&#39;kind&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;tendency&#39;</span><span class="p">:</span>
+        <span class="n">test_tendency</span><span class="p">(</span><span class="n">test_info</span><span class="p">,</span> <span class="n">newarray</span><span class="p">,</span> <span class="n">new_bins</span><span class="p">,</span> <span class="n">modes</span><span class="p">,</span>
+                      <span class="n">base_dir</span><span class="p">,</span> <span class="n">dic_fullncnames</span><span class="p">,</span> <span class="n">dic_varname</span><span class="p">,</span> <span class="n">ftest</span><span class="o">=</span><span class="n">ftest</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">test_info</span><span class="p">[</span><span class="s1">&#39;kind&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;average&#39;</span><span class="p">:</span>
+        <span class="n">test_average</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span>
+    
+    <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="test_tendency"><a class="viewcode-back" href="../../api.html#aerosols_psd.binning.test_tendency">[docs]</a><span class="k">def</span> <span class="nf">test_tendency</span><span class="p">(</span><span class="n">test_info</span><span class="p">,</span> <span class="n">tendency_bins</span><span class="p">,</span> <span class="n">new_bins</span><span class="p">,</span> <span class="n">modes</span><span class="p">,</span>
+                   <span class="n">basedir</span><span class="p">,</span> <span class="n">dic_ncnames</span><span class="p">,</span> <span class="n">dic_varname</span><span class="p">,</span> <span class="n">ftest</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function compares a binned diagnostic :math:`X(t, \phi, \zeta; b)` with the set of files per mode :math:`\{X_{m}(t, \phi, \zeta)\}`, where b is the set of bins.</span>
+
+<span class="sd">    It is assumed that test_info is of the form:</span>
+<span class="sd">    test_info = { kind=&#39;tendency&#39;, area=datarray, years=list of years as str}</span>
+
+<span class="sd">    For the calculation assumed a leap calendar and years with 365 days. Given that the test is </span>
+<span class="sd">    for consistency between modal and binned approaches last hypothesis is not important.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        test_info (dict):         Dictionary for fractions per mode for new_bins.</span>
+<span class="sd">        tendency_bins (datarray): Dictionary variable-names on each mode diagnostic netcdf.</span>
+<span class="sd">        new_bins (list):          List or array with the bin limits.</span>
+<span class="sd">        modes (list):             Mode names (used as keys for dictionaries above).</span>
+<span class="sd">        dic_varname (dict):       Dictionary variable-names on each mode diagnostic netcdf.</span>
+<span class="sd">        dic_ncnames (dict):       Dictionary filenames of netcdf files per mode.</span>
+<span class="sd">        ftest (file, optional):    Save test on opened file ftest. Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None. Print on screen or save to file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">vararea</span> <span class="o">=</span> <span class="n">test_info</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span>
+    <span class="n">lyears</span>  <span class="o">=</span> <span class="n">test_info</span><span class="p">[</span><span class="s1">&#39;years&#39;</span><span class="p">]</span>
+
+    <span class="c1">#f_area = &#39;../DATASETS/CRESCENDO_models_jasmin/IPSL/area_grid.nc&#39;</span>
+    <span class="c1">#vararea = xr.open_dataset(f_area)[&#39;area&#39;]</span>
+        
+    <span class="n">dic_checkbins</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">ftest</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; No save the double checking &#39;</span><span class="p">)</span>
+        
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="n">ftest</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; </span><span class="se">\n</span><span class="s1"> ============== mode contributions ============================ </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">lyears</span><span class="p">:</span>
+            <span class="n">tendency_test</span> <span class="o">=</span> <span class="n">tendency_bins</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s1">&#39;bins_up&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">year</span><span class="p">)</span>
+            <span class="n">check_bins</span> <span class="o">=</span> <span class="n">total_tendency</span><span class="p">(</span><span class="n">tendency_test</span><span class="p">,</span> <span class="n">vararea</span><span class="p">)</span>
+
+            <span class="n">ftest</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;   ---- &#39;</span><span class="o">+</span> <span class="n">year</span> <span class="o">+</span> <span class="s1">&#39; ----------------------- </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">accum</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">:</span>
+                <span class="n">bins_nc_check</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">dic_ncnames</span><span class="p">[</span><span class="n">mode</span><span class="p">])[</span><span class="n">dic_varname</span><span class="p">[</span><span class="n">mode</span><span class="p">]]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">year</span><span class="p">)</span>
+                <span class="n">check_mode</span> <span class="o">=</span> <span class="n">total_tendency</span><span class="p">(</span><span class="n">bins_nc_check</span><span class="p">,</span> <span class="n">vararea</span><span class="p">)</span>
+                <span class="n">accum</span> <span class="o">=</span> <span class="n">accum</span> <span class="o">+</span> <span class="n">check_mode</span>
+                <span class="n">ftest</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;     Contribution mode &#39;</span><span class="o">+</span><span class="n">mode</span><span class="o">+</span><span class="s1">&#39; : </span><span class="si">%8.2f</span><span class="s1">   |&gt; accum = </span><span class="si">%8.2f</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">check_mode</span><span class="p">,</span> <span class="n">accum</span><span class="p">))</span>
+
+            <span class="n">ftest</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>    <span class="s1">&#39;    *Contribution ALL bins:                       </span><span class="si">%8.2f</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">check_bins</span><span class="p">))</span>
+
+        <span class="n">ftest</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; </span><span class="se">\n</span><span class="s1"> ==============  bins contributions ============================ </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">lyears</span><span class="p">:</span>
+            <span class="n">tendency_test</span> <span class="o">=</span> <span class="n">tendency_bins</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s1">&#39;bins_up&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">year</span><span class="p">)</span>
+            <span class="n">check_bins</span> <span class="o">=</span> <span class="n">total_tendency</span><span class="p">(</span><span class="n">tendency_test</span><span class="p">,</span> <span class="n">vararea</span><span class="p">)</span>
+            <span class="n">accum2</span><span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">ftest</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;   ---- &#39;</span><span class="o">+</span> <span class="n">year</span> <span class="o">+</span> <span class="s1">&#39; ----------------------- </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">lcheck</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">bindown</span><span class="p">,</span><span class="n">binup</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">new_bins</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">new_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">::]):</span>
+                <span class="n">tendency_testbin</span> <span class="o">=</span> <span class="n">tendency_bins</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">bins_up</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">binup</span><span class="p">))</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">year</span><span class="p">)</span>
+                <span class="n">check_binup</span> <span class="o">=</span> <span class="n">total_tendency</span><span class="p">(</span><span class="n">tendency_testbin</span><span class="p">,</span> <span class="n">vararea</span><span class="p">)</span>
+                <span class="n">lcheck</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">check_binup</span><span class="p">)</span>
+                <span class="n">accum2</span> <span class="o">=</span> <span class="n">accum2</span> <span class="o">+</span> <span class="n">check_binup</span>
+                <span class="n">ftest</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;     Contribution bin [</span><span class="si">%6.1f</span><span class="s1">, </span><span class="si">%6.1f</span><span class="s1">] : </span><span class="si">%8.2f</span><span class="s1">   |&gt; accum = </span><span class="si">%8.2f</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">bindown</span><span class="p">,</span> <span class="n">binup</span><span class="p">,</span> <span class="n">check_binup</span><span class="p">,</span> <span class="n">accum2</span><span class="p">))</span>
+            <span class="n">dic_checkbins</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">a</span><span class="o">/</span><span class="n">accum2</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">lcheck</span><span class="p">]</span>
+            <span class="n">ftest</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>    <span class="s1">&#39;    *Contribution ALL bins:                                    </span><span class="si">%8.2f</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">check_bins</span><span class="p">))</span>
+            
+    <span class="k">return</span> </div>
+
+<span class="k">def</span> <span class="nf">_example_binning_emissions</span><span class="p">():</span>
+
+
+    <span class="n">a_sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">])</span>
+    <span class="n">a_mmd</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">22.0</span><span class="p">])</span>
+    <span class="n">a_mode</span>  <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;D1&#39;</span><span class="p">,</span><span class="s1">&#39;CI&#39;</span><span class="p">,</span><span class="s1">&#39;SI&#39;</span><span class="p">,</span><span class="s1">&#39;D4&#39;</span><span class="p">]</span>
+    <span class="n">new_bins</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mf">300.0</span><span class="p">]</span>
+
+    <span class="n">dic_fractions</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">mmd</span><span class="p">,</span> <span class="n">mode</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a_sigma</span><span class="p">,</span> <span class="n">a_mmd</span><span class="p">,</span> <span class="n">a_mode</span><span class="p">):</span> 
+        <span class="n">fractions</span> <span class="o">=</span> <span class="n">ln</span><span class="o">.</span><span class="n">bin_fractions_lognormal</span><span class="p">(</span><span class="n">mmd</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">new_bins</span><span class="p">)</span>
+        <span class="n">dic_fractions</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span> <span class="o">=</span> <span class="n">fractions</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">dic_fractions</span><span class="p">)</span>
+
+    <span class="n">dic_varname</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;D1&#39;</span><span class="p">:</span><span class="s1">&#39;emidustD1&#39;</span><span class="p">,</span><span class="s1">&#39;CI&#39;</span><span class="p">:</span><span class="s1">&#39;emidustCI&#39;</span><span class="p">,</span> <span class="s1">&#39;SI&#39;</span><span class="p">:</span><span class="s1">&#39;emidustSI&#39;</span><span class="p">,</span><span class="s1">&#39;D4&#39;</span><span class="p">:</span><span class="s1">&#39;emidustD4&#39;</span><span class="p">}</span>
+
+    <span class="n">dic_ncnames</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;D1&#39;</span><span class="p">:</span><span class="s1">&#39;emidustD1_JKmon_IPSL-LMDZORINCAv6_4modes-DRE-global-ade_v1-r1i1p1f1_gr_20090101-20141231-accum.nc&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;CI&#39;</span><span class="p">:</span><span class="s1">&#39;emidustCI_JKmon_IPSL-LMDZORINCAv6_4modes-DRE-global-ade_v1-r1i1p1f1_gr_20090101-20141231-accum.nc&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;SI&#39;</span><span class="p">:</span><span class="s1">&#39;emidustSI_JKmon_IPSL-LMDZORINCAv6_4modes-DRE-global-ade_v1-r1i1p1f1_gr_20090101-20141231-accum.nc&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;D4&#39;</span><span class="p">:</span><span class="s1">&#39;emidustD4_JKmon_IPSL-LMDZORINCAv6_4modes-DRE-global-ade_v1-r1i1p1f1_gr_20090101-20141231-accum.nc&#39;</span>
+                <span class="p">}</span>
+
+    <span class="n">f_area</span> <span class="o">=</span> <span class="s1">&#39;tests/area_grid.nc&#39;</span>
+    <span class="n">vararea</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">f_area</span><span class="p">)[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span>
+
+    <span class="n">test_emi</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;kind&#39;</span><span class="p">:</span><span class="s1">&#39;tendency&#39;</span><span class="p">,</span> <span class="s1">&#39;area&#39;</span><span class="p">:</span><span class="n">vararea</span><span class="p">,</span> <span class="s1">&#39;years&#39;</span><span class="p">:[</span><span class="s1">&#39;2010&#39;</span><span class="p">,</span><span class="s1">&#39;2011&#39;</span><span class="p">]}</span>
+
+    <span class="n">ftestemi</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;check_emission_binning.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+    <span class="n">dic_files</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;basedir&#39;</span><span class="p">:</span> <span class="s1">&#39;./tests&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;base_nc&#39;</span><span class="p">:</span> <span class="n">dic_ncnames</span><span class="p">[</span><span class="s1">&#39;D1&#39;</span><span class="p">],</span> 
+                <span class="s1">&#39;base_var&#39;</span><span class="p">:</span> <span class="s1">&#39;emidustD1&#39;</span><span class="p">,</span>           
+                <span class="s1">&#39;newf_nc&#39;</span><span class="p">:</span>  <span class="s1">&#39;emidust_BINNED.nc&#39;</span><span class="p">}</span>
+
+    <span class="n">create_netcdf_2D_bins</span><span class="p">(</span><span class="n">dic_fractions</span><span class="p">,</span> <span class="n">dic_varname</span><span class="p">,</span> <span class="n">dic_ncnames</span><span class="p">,</span> <span class="n">a_mode</span><span class="p">,</span> <span class="n">new_bins</span><span class="p">,</span>
+                        <span class="n">dic_files</span><span class="p">,</span>  <span class="s1">&#39;emidust_bin&#39;</span><span class="p">,</span> <span class="n">ftest</span><span class="o">=</span><span class="n">ftestemi</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">test_info</span><span class="o">=</span><span class="n">test_emi</span><span class="p">)</span>
+
+    <span class="k">return</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">_example_binning_create_netcdf_2D_bins</span><span class="p">()</span>
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Ramiro Checa-Garcia
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

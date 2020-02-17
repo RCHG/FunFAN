@@ -1,0 +1,640 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API reference &mdash; FunFAM 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Index" href="myindex.html" />
+    <link rel="prev" title="References" href="references.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> FunFAM
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_functions.html">Set of Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aerosols-psd.html">Examples aerosols-psd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modules">Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-aerosols_psd.lognormal">Aerosols PSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-aerosols_psd.binning">Binning of modal based climate diagnostics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="myindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FunFAM</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>API reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-reference">
+<h1>API reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<p>This page provides an auto-generated summary of API. For more details
+and examples, refer to the relevant chapters in the main part of the
+documentation.</p>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="module-aerosols_psd.lognormal">
+<span id="aerosols-psd"></span><h3>Aerosols PSD<a class="headerlink" href="#module-aerosols_psd.lognormal" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line"><strong>Program name</strong>      : lognormal.py</div>
+<div class="line"><strong>Author</strong>            : Ramiro Checa-Garcia</div>
+<div class="line"><strong>email</strong>             : <a class="reference external" href="mailto:rcheca&#37;&#52;&#48;lsce&#46;ipsl&#46;fr">rcheca<span>&#64;</span>lsce<span>&#46;</span>ipsl<span>&#46;</span>fr</a></div>
+<div class="line"><strong>Purpose</strong>           : Functions related with lognormal aerosol distributions.</div>
+<div class="line"><strong>Revision History</strong>  :</div>
+<div class="line-block">
+<div class="line">- Jan-2020   v1.0     Initial version. Contact: R.Checa</div>
+</div>
+</div>
+</div>
+<dl class="function">
+<dt id="aerosols_psd.lognormal.Npdf_D">
+<code class="sig-prename descclassname">aerosols_psd.lognormal.</code><code class="sig-name descname">Npdf_D</code><span class="sig-paren">(</span><em class="sig-param">D</em>, <em class="sig-param">lnmu</em>, <em class="sig-param">lnsigma</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/lognormal.html#Npdf_D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.lognormal.Npdf_D" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Function for the pdf (probability density function)</dt><dd><p><img class="math" src="_images/math/d3b9931ea4a2690e6118d8dfa19d44e63aeb0a2e.png" alt="x^{*}(D)"/> such as <img class="math" src="_images/math/c7d9dc720b3b5a05dfc623ecddfe940f46f49293.png" alt="dX(D)=x^{*}(D; ln \mu, ln \sigma)dD"/></p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>D</strong> (<em>float</em>) – diameter value</p></li>
+<li><p><strong>lnmu</strong> (<em>float</em>) – mean value as <img class="math" src="_images/math/dc1d4e4401fb3c3f4163a0f94024fcdec2c3c8f3.png" alt="ln(\mu)"/></p></li>
+<li><p><strong>lnsigma</strong> (<em>float</em>) – standard deviation as <img class="math" src="_images/math/449a61b436ced50e2d6f47a9464e36f07f650778.png" alt="ln(\sigma)"/></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Probability at diameter D (note about dD)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pdf (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="aerosols_psd.lognormal.Test">
+<em class="property">class </em><code class="sig-prename descclassname">aerosols_psd.lognormal.</code><code class="sig-name descname">Test</code><span class="sig-paren">(</span><em class="sig-param">methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/lognormal.html#Test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.lognormal.Test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="aerosols_psd.lognormal.Xcdf_D">
+<code class="sig-prename descclassname">aerosols_psd.lognormal.</code><code class="sig-name descname">Xcdf_D</code><span class="sig-paren">(</span><em class="sig-param">D</em>, <em class="sig-param">lnmu</em>, <em class="sig-param">lnsigma</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/lognormal.html#Xcdf_D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.lognormal.Xcdf_D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for the cdf (cumulative distribution function)
+<img class="math" src="_images/math/ea53526b657bbf37eab1b92fe774717d2bac2043.png" alt="X^{*}(D)"/> such as <img class="math" src="_images/math/9fee7444e333da6536451ebef8ed2ced37ab25c4.png" alt="X(D)=\int_{0}^{D}x^{*}(y; ln \mu, ln \sigma)dy"/></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>D</strong> (<em>float</em>) – diameter value</p></li>
+<li><p><strong>lnmu</strong> (<em>float</em>) – mean value as <img class="math" src="_images/math/dc1d4e4401fb3c3f4163a0f94024fcdec2c3c8f3.png" alt="ln(\mu)"/></p></li>
+<li><p><strong>lnsigma</strong> (<em>float</em>) – standard deviation as <img class="math" src="_images/math/449a61b436ced50e2d6f47a9464e36f07f650778.png" alt="ln(\sigma)"/></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Cumulative Probability Function from 0 to D.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>cdf (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="aerosols_psd.lognormal.Xpdf_logD">
+<code class="sig-prename descclassname">aerosols_psd.lognormal.</code><code class="sig-name descname">Xpdf_logD</code><span class="sig-paren">(</span><em class="sig-param">D</em>, <em class="sig-param">lnmu</em>, <em class="sig-param">lnsigma</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/lognormal.html#Xpdf_logD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.lognormal.Xpdf_logD" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Function for the pdf (probability density function)</dt><dd><p><img class="math" src="_images/math/d3b9931ea4a2690e6118d8dfa19d44e63aeb0a2e.png" alt="x^{*}(D)"/> such as <img class="math" src="_images/math/113b27faf110e2962b227dca6d41640a9be81ff2.png" alt="dX(D)=x^{*}(D; ln \mu, ln \sigma)dlnD"/></p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>D</strong> (<em>float</em>) – diameter value</p></li>
+<li><p><strong>lnmu</strong> (<em>float</em>) – mean value as <img class="math" src="_images/math/dc1d4e4401fb3c3f4163a0f94024fcdec2c3c8f3.png" alt="ln(\mu)"/></p></li>
+<li><p><strong>lnsigma</strong> (<em>float</em>) – standard deviation as <img class="math" src="_images/math/449a61b436ced50e2d6f47a9464e36f07f650778.png" alt="ln(\sigma)"/></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Pprobability at diameter D (but note about dlnD, so we have actually a gaussian distribution).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pdf (float)</p>
+</dd>
+</dl>
+<dl>
+<dt>Comment:</dt><dd><p>This function is actually very general as:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><img class="math" src="_images/math/cd491460e83b20cca73de28b8683662b3f0888dd.png" alt="dN(D)=n^{*}(D; ln \mu_{nmd}, ln \sigma)dlnD"/></p></li>
+<li><p><img class="math" src="_images/math/2f8cc4641c12a439edcfaf34bd9fe8445b2828d5.png" alt="dA(D)=a^{*}(D; ln \mu_{amd}, ln \sigma)dlnD"/></p></li>
+<li><p><img class="math" src="_images/math/a9395203512e1536de45cf0acfa30e1936d2c900.png" alt="dV(D)=v^{*}(D; ln \mu_{mmd}, ln \sigma)dlnD"/></p></li>
+</ul>
+</div></blockquote>
+<p>where</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><img class="math" src="_images/math/067c0ebcd0498e4e1a21da2ebee9ea3076decc41.png" alt="\mu_{nmd}"/> (number median diameter)</p></li>
+<li><p><img class="math" src="_images/math/3076df358053ca17b5add6d8a422c0fa8546d03e.png" alt="\mu_{amd}"/> (area   median diameter)</p></li>
+<li><p><img class="math" src="_images/math/bb0f0d921d8f34048c4ba225236095db5e964d75.png" alt="\mu_{mmd}"/> (volume median diameter)</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="aerosols_psd.lognormal.bin_fractions_lognormal">
+<code class="sig-prename descclassname">aerosols_psd.lognormal.</code><code class="sig-name descname">bin_fractions_lognormal</code><span class="sig-paren">(</span><em class="sig-param">xmd</em>, <em class="sig-param">sigma</em>, <em class="sig-param">bins</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/lognormal.html#bin_fractions_lognormal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.lognormal.bin_fractions_lognormal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to estimate the bins fractions for given <img class="math" src="_images/math/b5eb9c5d186b9b5ffec33fcc1c49c051302cdf8b.png" alt="\mu_{md}"/> and <img class="math" src="_images/math/b52df27bfb0b1e3af0c2c68a7b9da459178c2a7d.png" alt="\sigma"/>.
+Note that <img class="math" src="_images/math/b5eb9c5d186b9b5ffec33fcc1c49c051302cdf8b.png" alt="\mu_{md}"/> is usually <img class="math" src="_images/math/067c0ebcd0498e4e1a21da2ebee9ea3076decc41.png" alt="\mu_{nmd}"/>, <img class="math" src="_images/math/3076df358053ca17b5add6d8a422c0fa8546d03e.png" alt="\mu_{amd}"/> or <img class="math" src="_images/math/bb0f0d921d8f34048c4ba225236095db5e964d75.png" alt="\mu_{mmd}"/>
+It assumed a unit consistency between xmd and the bins values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmd</strong> (<em>float</em>) – x median diameter</p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – <img class="math" src="_images/math/b52df27bfb0b1e3af0c2c68a7b9da459178c2a7d.png" alt="\sigma"/> (not <img class="math" src="_images/math/e5b2d89de2695190471e7c987768638a1df73c2d.png" alt="ln \sigma"/>).</p></li>
+<li><p><strong>bins</strong> (<em>list</em>) – List of bin limits (no central values).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list with bins fraction between bin limits.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>lfractions (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="aerosols_psd.lognormal.lnmode">
+<em class="property">class </em><code class="sig-prename descclassname">aerosols_psd.lognormal.</code><code class="sig-name descname">lnmode</code><span class="sig-paren">(</span><em class="sig-param">ini_dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/lognormal.html#lnmode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.lognormal.lnmode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object with key information of an atmospheric particle lognormal mode
+It is based on a dictionary used to build de object, this dictionary
+has some fields as mandatory:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sigma</span></code>  <img class="math" src="_images/math/b52df27bfb0b1e3af0c2c68a7b9da459178c2a7d.png" alt="\sigma"/> of lognormal mode (not <img class="math" src="_images/math/e5b2d89de2695190471e7c987768638a1df73c2d.png" alt="ln \sigma"/>!!)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_conc</span></code> number concentration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> name of mode</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rhop</span></code> density particle</p></li>
+</ul>
+</div></blockquote>
+<p>and one of these two:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mmd</span></code>  mass median diameter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nmd</span></code>  number median diameter</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ini_dict</strong> (<em>dict</em>) – Dictionary with the main information to be used in the lognormal mode. It is mandatory that this dataset has the information indicated above.</p>
+</dd>
+</dl>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======= EXAMPLE of how to use (piece of code, not in REPL)</span>
+<span class="c1">#</span>
+<span class="c1"># (1) Create/Define the object here a lnmode named lnD1</span>
+<span class="n">lnD1</span> <span class="o">=</span> <span class="n">lnmode</span><span class="p">({</span><span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">,</span> <span class="s1">&#39;mmd&#39;</span><span class="p">:</span><span class="mf">1.e-6</span><span class="p">,</span> <span class="s1">&#39;n_conc&#39;</span><span class="p">:</span><span class="mf">7e-6</span><span class="p">,</span> <span class="s1">&#39;rhop&#39;</span><span class="p">:</span><span class="mf">2650.0</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;D1&#39;</span><span class="p">})</span>
+
+<span class="c1"># (2) How the statistics information of this mode</span>
+<span class="n">lnD1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># (3) Estimate the bin fractions for that distribution for mass distribution</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lnD1</span><span class="o">.</span><span class="n">bin_fractions</span><span class="p">([</span><span class="mf">0.001e-6</span><span class="p">,</span><span class="mf">1.0e-6</span><span class="p">,</span><span class="mf">2.e-6</span><span class="p">,</span><span class="mf">3.e-6</span><span class="p">]))</span>
+
+<span class="c1"># (4) Estimate the bin fractions for that distribution for number distribution</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lnD1</span><span class="o">.</span><span class="n">bin_fractions</span><span class="p">([</span><span class="mf">0.001e-6</span><span class="p">,</span><span class="mf">1.0e-6</span><span class="p">,</span><span class="mf">2.e-6</span><span class="p">,</span><span class="mf">3.e-6</span><span class="p">]),</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;nmd&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="aerosols_psd.lognormal.lnmode.bin_fractions">
+<code class="sig-name descname">bin_fractions</code><span class="sig-paren">(</span><em class="sig-param">bins</em>, <em class="sig-param">kind='mmd'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/lognormal.html#lnmode.bin_fractions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.lognormal.lnmode.bin_fractions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the fraction of the distribution of each bin. We have an
+object with mmd, nmd etc. So we have to be explicit about for which
+distribution we want to calculate bin fractions (mmd, nmd etc).</p>
+<p>NOTE: we have to be consistent between bins units and mmd/nmd units.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bins</strong> (<em>list/array</em>) – List with all bin limits (no bins center values)</p></li>
+<li><p><strong>kind</strong> (<em>str</em><em>, </em><em>optional</em>) – mmd or nmd. Defaults to ‘mmd’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Freq/fraction per bin</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bin_frac (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="aerosols_psd.lognormal.lnmode.show">
+<code class="sig-name descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/lognormal.html#lnmode.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.lognormal.lnmode.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the main properties of the lognormal mode</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="aerosols_psd.lognormal.plot_multimodal">
+<code class="sig-prename descclassname">aerosols_psd.lognormal.</code><code class="sig-name descname">plot_multimodal</code><span class="sig-paren">(</span><em class="sig-param">ax0</em>, <em class="sig-param">a_sigma</em>, <em class="sig-param">a_mmd</em>, <em class="sig-param">a_names</em>, <em class="sig-param">a_fact</em>, <em class="sig-param">nmodes</em>, <em class="sig-param">dmax=150.0</em>, <em class="sig-param">dmin=0.001</em>, <em class="sig-param">dinc=0.0005</em>, <em class="sig-param">rho=2650</em>, <em class="sig-param">nconc=7000000.0</em>, <em class="sig-param">ndist='v'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/lognormal.html#plot_multimodal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.lognormal.plot_multimodal" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function add a plot of a multimodal distribution ot the axes ax0,
+the modes added are those defined by a_sigma and a_mmd but only using
+the first nmodes in the array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax0</strong> (<em>matplotlib axes</em>) – A matplotlib axes where draw the distribution</p></li>
+<li><p><strong>a_sigma</strong> (<em>array</em>) – Array with the values of sigma of a multimodal lognormal.</p></li>
+<li><p><strong>a_mmd</strong> (<em>array</em>) – Array with the values of the mass median diameter of all modes.</p></li>
+<li><p><strong>a_names</strong> (<em>array</em>) – Array or list with the names of the modes.</p></li>
+<li><p><strong>a_fact</strong> (<em>array</em>) – Array with fractions for each mode.</p></li>
+<li><p><strong>nmodes</strong> (<em>array</em>) – Index (in the arrays above) of modes to use.</p></li>
+<li><p><strong>dmax</strong> (<em>float</em><em>, </em><em>optional</em>) – Max diameter on plot. Defaults to 150.0</p></li>
+<li><p><strong>dmin</strong> (<em>float</em><em>, </em><em>optional</em>) – Min diameter on plot. Defaults to 0.001</p></li>
+<li><p><strong>dinc</strong> (<em>float</em><em>, </em><em>optional</em>) – resolution in diameter. Defaults to 0.0005</p></li>
+<li><p><strong>rho</strong> (<em>float</em><em>, </em><em>optional</em>) – Density of the particles. Defaults to 2650</p></li>
+<li><p><strong>nconc</strong> (<em>float</em><em>, </em><em>optional</em>) – Number concentration. Defaults to 7e6</p></li>
+<li><p><strong>ndist</strong> (<em>string</em><em>, </em><em>optical</em>) – Name of distribution. Defaults to v.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>return the axes introduced and changed by the function.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ax0 (matplotlib axes)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="aerosols_psd.lognormal.stats_lognormal_mode">
+<code class="sig-prename descclassname">aerosols_psd.lognormal.</code><code class="sig-name descname">stats_lognormal_mode</code><span class="sig-paren">(</span><em class="sig-param">sigma</em>, <em class="sig-param">mmd</em>, <em class="sig-param">name</em>, <em class="sig-param">rhop=2650.0</em>, <em class="sig-param">n_conc=7000000.0</em>, <em class="sig-param">show=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/lognormal.html#stats_lognormal_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.lognormal.stats_lognormal_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates, and optionally shows, the general info of an aerosol lognormal mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sigma</strong> (<em>float</em>) – Standard deviation of mode.</p></li>
+<li><p><strong>mmd</strong> (<em>float</em>) – Mass median diameter.</p></li>
+<li><p><strong>rhop</strong> (<em>float</em><em>, </em><em>optional</em>) – Density particles in mode. Defaults to 2650.0.</p></li>
+<li><p><strong>n_conc</strong> (<em>float</em><em>, </em><em>optional</em>) – Number concentration. Defaults to 7e6</p></li>
+<li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – True to print in stdout. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list with several statistics asociated to lognormal distr.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>out (list)</p>
+</dd>
+</dl>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span># =======================================================================
+# Typical output
+#
+# &gt; stats_lognormal_mode(1.8, 1e-6, &#39;D1&#39;, rhop=2650.0, n_conc=7.e6)
+
+=========================================================================
+*sigma  = 1.8000e+00  | *mmd   = 1.0000e-06 m   |=&gt; nmd    = 3.5470e-07 m
+                      |=&gt; smd  = 7.0787e-07 m   |   smd!   = 7.0787e-07 m
+ reff_n = 8.4135e-07  | reff_v = 5.0000e-07 m   |   reff_m = 5.0000e-07 m
+ mmeand = 1.1886e-06  | nmoded = 2.5108e-07 m   |   d_avgm = 5.9557e-07 m
+*n_conc = 7.0000e+06  | a_conc = 4.6456e-06 m   |   v_conc = 7.7427e-13 m
+ m_conc = 2.0518e-09
+
+*before word means pre-defined, ! after word means 2nd method
+all others without symbols mean calculated
+=========================================================================
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-aerosols_psd.binning">
+<span id="binning-of-modal-based-climate-diagnostics"></span><h3>Binning of modal based climate diagnostics<a class="headerlink" href="#module-aerosols_psd.binning" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line"><strong>Program name</strong>      : binning.py</div>
+<div class="line"><strong>Author</strong>            : Ramiro Checa-Garcia</div>
+<div class="line"><strong>email</strong>             : <a class="reference external" href="mailto:rcheca&#37;&#52;&#48;lsce&#46;ipsl&#46;fr">rcheca<span>&#64;</span>lsce<span>&#46;</span>ipsl<span>&#46;</span>fr</a></div>
+<div class="line"><strong>Purpose</strong>           : Functions to perform a binning of a modal based diagnostics</div>
+<div class="line"><strong>Revision History</strong>  :</div>
+<div class="line-block">
+<div class="line">- Jan-2020   v1.0     Initial version. Contact: R.Checa</div>
+</div>
+</div>
+</div>
+<dl class="function">
+<dt id="aerosols_psd.binning.create_netcdf_2D_bins">
+<code class="sig-prename descclassname">aerosols_psd.binning.</code><code class="sig-name descname">create_netcdf_2D_bins</code><span class="sig-paren">(</span><em class="sig-param">dic_fractions</em>, <em class="sig-param">dic_varname</em>, <em class="sig-param">dic_ncnames</em>, <em class="sig-param">modes</em>, <em class="sig-param">new_bins</em>, <em class="sig-param">dic_files</em>, <em class="sig-param">newvarname</em>, <em class="sig-param">ftest=None</em>, <em class="sig-param">save=True</em>, <em class="sig-param">test_info=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/binning.html#create_netcdf_2D_bins"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.binning.create_netcdf_2D_bins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a netcdf of a given (lat,lon) diagnostic with values over a set of bins, given the
+netcdfs over a set of modes for that diagnostics. The inputs are therefore a set
+of netcdfs, one per mode, for a variable X(time, lat, lon) the output is a single netcdf with
+X(time, lat, lon, bins).</p>
+<p>For the calculation we need the expected fractions per bin for each mode. That can be calculated
+with other functions provided in aerosols_psd set of functions.</p>
+<p>With test_info the function can perform test of consistency.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dic_fractions</strong> (<em>dict</em>) – Dictionary for fractions per mode for new_bins.</p></li>
+<li><p><strong>dic_varname</strong> (<em>dict</em>) – Dictionary variable-names on each mode diagnostic netcdf.</p></li>
+<li><p><strong>dic_ncnames</strong> (<em>dict</em>) – Dictionary filenames of netcdf files per mode.</p></li>
+<li><p><strong>modes</strong> (<em>list</em>) – Mode names (used as keys for dictionaries above).</p></li>
+<li><p><strong>new_bins</strong> (<em>list</em>) – list or array with the bin limits.</p></li>
+<li><p><strong>dic_files</strong> (<em>dict</em>) – Dictionary with info for output netcdf and base netcdf.</p></li>
+<li><p><strong>newvarname</strong> (<em>str</em>) – New varname with diagnostic per bins.</p></li>
+<li><p><strong>ftest</strong> (<em>file</em><em>, </em><em>optional</em>) – Save test on opened file ftest. Defaults to None.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save netcdf (if not useful for test).
+Defaults to True.</p></li>
+<li><p><strong>test_info</strong> (<em>dict</em>) – kind of test, area is a datarray of area_grid if needed by test.
+Defaults to None.
+Example: {kind=’tendeny’, area=datarray, years=[‘2000’,’2001’]}</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None. It saves a netcdf.</p>
+</dd>
+</dl>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXAMPLE ================================================================</span>
+<span class="c1"># Case with: modes named by A and B  -&gt; TWO MODES</span>
+<span class="c1">#            bins = [0.1, 5.0, 10.0] -&gt; TWO BINS (three limits)</span>
+<span class="c1">#</span>
+<span class="n">modes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]</span>
+<span class="n">bins</span>  <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]</span>
+<span class="n">dic_fractions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]}</span>
+<span class="n">dic_varname</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="s1">&#39;emidust&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="s1">&#39;emidust&#39;</span> <span class="p">}</span>
+<span class="n">dic_ncnames</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="s1">&#39;emidust_modeA_mymodel.nc&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="s1">&#39;emidust_modeB_mymodel.nc&#39;</span> <span class="p">}</span>
+<span class="n">dic_files</span>   <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;basedir&#39;</span><span class="p">:</span> <span class="s1">&#39;/home/myhome/mydirwithnc/&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;base_nc&#39;</span><span class="p">:</span> <span class="s1">&#39;my_canonical_netcdf.nc&#39;</span><span class="p">,</span>
+               <span class="c1"># base_nc -&gt; It could be any of the dic_ncnames.</span>
+               <span class="s1">&#39;base_var&#39;</span><span class="p">:</span> <span class="s1">&#39;emidust&#39;</span><span class="p">,</span>
+               <span class="c1"># base_bar -&gt; It will be remove on save of binned file</span>
+               <span class="s1">&#39;newf_nc&#39;</span><span class="p">:</span>  <span class="s1">&#39;emidust_BINNED.nc&#39;</span><span class="p">}</span>
+<span class="n">newvarname</span>  <span class="o">=</span> <span class="s1">&#39;emidust_bins&#39;</span>
+
+<span class="n">create_netcdf_emi_bins</span><span class="p">(</span><span class="n">dic_fractions</span><span class="p">,</span> <span class="n">dic_varname</span><span class="p">,</span> <span class="n">dic_ncnames</span><span class="p">,</span> <span class="n">modes</span><span class="p">,</span> <span class="n">new_bins</span><span class="p">,</span>
+                       <span class="n">dic_files</span><span class="p">,</span>  <span class="n">newvarname</span><span class="p">,</span> <span class="n">ftest</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># (1) Read &#39;basedir + base_nc&#39; -&gt; copy from here the coords and dimensions of netcdf</span>
+<span class="c1"># (2) Add the bins dimensions to the given structure</span>
+<span class="c1"># (3) Open the files of dic_ncnames, for each file open the variable of dic_varname.</span>
+<span class="c1"># (4) With these files and the dic_fractions estimate the binned 2D file.</span>
+<span class="c1"># (5) As save=True it saved the netcdf with name newf_nc and variable name newvarname.</span>
+<span class="c1">#</span>
+<span class="c1"># For emissions or depositions it is a handy possibility to test consistency.</span>
+
+
+<span class="n">f_area</span> <span class="o">=</span> <span class="s1">&#39;/home/myhome/mydirwithnc/area_grid.nc&#39;</span>
+<span class="n">vararea</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">f_area</span><span class="p">)[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span>
+<span class="n">mytest</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;testing_results.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">test_emi</span> <span class="o">=</span> <span class="p">{</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;tendency&#39;</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="n">vararea</span><span class="p">}</span>
+
+<span class="n">create_netcdf_emi_bins</span><span class="p">(</span><span class="n">dic_fractions</span><span class="p">,</span> <span class="n">dic_varname</span><span class="p">,</span> <span class="n">dic_ncnames</span><span class="p">,</span> <span class="n">modes</span><span class="p">,</span> <span class="n">new_bins</span><span class="p">,</span>
+                       <span class="n">dic_files</span><span class="p">,</span>  <span class="n">newvarname</span><span class="p">,</span> <span class="n">ftest</span><span class="o">=</span><span class="n">mytest</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                       <span class="n">test_info</span><span class="o">=</span><span class="n">test_emi</span><span class="p">)</span>
+
+<span class="n">mytest</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="aerosols_psd.binning.test_tendency">
+<code class="sig-prename descclassname">aerosols_psd.binning.</code><code class="sig-name descname">test_tendency</code><span class="sig-paren">(</span><em class="sig-param">test_info</em>, <em class="sig-param">tendency_bins</em>, <em class="sig-param">new_bins</em>, <em class="sig-param">modes</em>, <em class="sig-param">basedir</em>, <em class="sig-param">dic_ncnames</em>, <em class="sig-param">dic_varname</em>, <em class="sig-param">ftest=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/binning.html#test_tendency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.binning.test_tendency" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function compares a binned diagnostic <img class="math" src="_images/math/3a8baff4df0b5ebfae15cf3b6bd666098152cfa4.png" alt="X(t, \phi, \zeta; b)"/> with the set of files per mode <img class="math" src="_images/math/559c8ff91716aa58d5461d723c2cb2ef40592a9c.png" alt="\{X_{m}(t, \phi, \zeta)\}"/>, where b is the set of bins.</p>
+<p>It is assumed that test_info is of the form:
+test_info = { kind=’tendency’, area=datarray, years=list of years as str}</p>
+<p>For the calculation assumed a leap calendar and years with 365 days. Given that the test is
+for consistency between modal and binned approaches last hypothesis is not important.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>test_info</strong> (<em>dict</em>) – Dictionary for fractions per mode for new_bins.</p></li>
+<li><p><strong>tendency_bins</strong> (<em>datarray</em>) – Dictionary variable-names on each mode diagnostic netcdf.</p></li>
+<li><p><strong>new_bins</strong> (<em>list</em>) – List or array with the bin limits.</p></li>
+<li><p><strong>modes</strong> (<em>list</em>) – Mode names (used as keys for dictionaries above).</p></li>
+<li><p><strong>dic_varname</strong> (<em>dict</em>) – Dictionary variable-names on each mode diagnostic netcdf.</p></li>
+<li><p><strong>dic_ncnames</strong> (<em>dict</em>) – Dictionary filenames of netcdf files per mode.</p></li>
+<li><p><strong>ftest</strong> (<em>file</em><em>, </em><em>optional</em>) – Save test on opened file ftest. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None. Print on screen or save to file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="aerosols_psd.binning.total_tendency">
+<code class="sig-prename descclassname">aerosols_psd.binning.</code><code class="sig-name descname">total_tendency</code><span class="sig-paren">(</span><em class="sig-param">tendency_data</em>, <em class="sig-param">area</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aerosols_psd/binning.html#total_tendency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aerosols_psd.binning.total_tendency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate the total tendency for a year
+assuming a year with 365 days. Inputs are in SI, and outputs are
+Tg per year.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tendency_data</strong> (<em>datarray</em>) – Datarray with a tendency field with monthly resolution, and SI units.</p></li>
+<li><p><strong>area</strong> (<em>datarray</em>) – Datarray with the area per grid cell.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Total tendency per year in Tg.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tendency (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="myindex.html" class="btn btn-neutral float-right" title="Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="references.html" class="btn btn-neutral float-left" title="References" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Ramiro Checa-Garcia
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

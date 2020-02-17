@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examples aerosols-psd &mdash; FunFAM 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="Set of Functions" href="set_functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> FunFAM
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set_functions.html">Set of Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples aerosols-psd</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lognormal-distribution">Lognormal distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#binning-of-modal-emissions">Binning of modal emissions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="myindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FunFAM</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Examples aerosols-psd</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/aerosols-psd.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="examples-aerosols-psd">
+<h1>Examples aerosols-psd<a class="headerlink" href="#examples-aerosols-psd" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lognormal-distribution">
+<span id="ln-example"></span><h2>Lognormal distribution<a class="headerlink" href="#lognormal-distribution" title="Permalink to this headline">¶</a></h2>
+<p>There are several functions to manage particle size distributions of
+aerosols when the functional form follows a lognormal distribution.</p>
+<p>If we describe the particle size distribution indicating,
+that the number of particles with diameter between D and D+dD is n(D),
+a lognormal distribution. Then there is a set of related distributions
+with this number distribution describing the area, volume, mass distribution
+with size. All of them are described by a value of mean <img class="math" src="_images/math/4a3598141469c2555591e66606a1b86d4ec6dca9.png" alt="\mu"/>, plus an standard
+deviation <img class="math" src="_images/math/b52df27bfb0b1e3af0c2c68a7b9da459178c2a7d.png" alt="\sigma"/>. These means are the number median diameter (nmd), the
+surface median diameter (smd) and the mass median diameter (mmd), given one of these
+typical diameters and <img class="math" src="_images/math/b52df27bfb0b1e3af0c2c68a7b9da459178c2a7d.png" alt="\sigma"/>, we can obtain all other diameters
+and several properties of the <em>families of distributions</em>. For this
+it is useful the functions are <code class="docutils literal notranslate"><span class="pre">lognormal.py</span></code>. Here is how to show
+these values given <img class="math" src="_images/math/b52df27bfb0b1e3af0c2c68a7b9da459178c2a7d.png" alt="\sigma"/> and mmd.</p>
+<p>Two know more about lognormal distributions for aerosols <a class="bibtex reference internal" href="references.html#heintzenberg-1994" id="id1">[Hei94]</a>
+<a class="bibtex reference internal" href="references.html#grainger-2017" id="id2">[Gra17]</a>. For aerosols and also particle distributions <a class="bibtex reference internal" href="references.html#zender-2002" id="id3">[Zen02]</a>
+<a class="bibtex reference internal" href="references.html#checagarcia2013measurement" id="id4">[CG13]</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># =======================================================================
+# Typical output
+#
+# A mode with sigma=1.8, mmd=1.e-6 metres, name=&#39;D1&#39;, density =2650 kg/m3
+# and number concentration of 7e6.
+
+&gt; stats_lognormal_mode(1.8, 1e-6, &#39;D1&#39;, rhop=2650.0, n_conc=7.e6)
+
+# we will have as output:
+
+=========================================================================
+*sigma  = 1.8000e+00  | *mmd   = 1.0000e-06 m   |=&gt; nmd    = 3.5470e-07 m
+                      |=&gt; smd  = 7.0787e-07 m   |   smd!   = 7.0787e-07 m
+ reff_n = 8.4135e-07  | reff_v = 5.0000e-07 m   |   reff_m = 5.0000e-07 m
+ mmeand = 1.1886e-06  | nmoded = 2.5108e-07 m   |   d_avgm = 5.9557e-07 m
+*n_conc = 7.0000e+06  | a_conc = 4.6456e-06 m   |   v_conc = 7.7427e-13 m
+ m_conc = 2.0518e-09
+
+*before word means pre-defined, ! after word means 2nd method
+all others without symbols mean calculated
+==================================================================
+</pre></div>
+</div>
+<p>Here is also implemented an object named <code class="docutils literal notranslate"><span class="pre">lnmode</span></code> that allows to define this
+family of distributions related with an specific logormal mode. It shows
+can reconstruct this object by using mmd or nmd.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======= EXAMPLE of how to use (piece of code, not in REPL)</span>
+<span class="c1">#</span>
+<span class="c1"># (1) Create/Define the object here a lnmode named lnD1</span>
+<span class="n">lnD1</span> <span class="o">=</span> <span class="n">lnmode</span><span class="p">({</span><span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">,</span> <span class="s1">&#39;mmd&#39;</span><span class="p">:</span><span class="mf">1.e-6</span><span class="p">,</span> <span class="s1">&#39;n_conc&#39;</span><span class="p">:</span><span class="mf">7e-6</span><span class="p">,</span> <span class="s1">&#39;rhop&#39;</span><span class="p">:</span><span class="mf">2650.0</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;D1&#39;</span><span class="p">})</span>
+
+<span class="c1"># (2) How the statistics information of this mode</span>
+<span class="n">lnD1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># (3) Estimate the bin fractions for that distribution for mass distribution</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lnD1</span><span class="o">.</span><span class="n">bin_fractions</span><span class="p">([</span><span class="mf">0.001e-6</span><span class="p">,</span><span class="mf">1.0e-6</span><span class="p">,</span><span class="mf">2.e-6</span><span class="p">,</span><span class="mf">3.e-6</span><span class="p">]))</span>
+
+<span class="c1"># (4) Estimate the bin fractions for that distribution for number distribution</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lnD1</span><span class="o">.</span><span class="n">bin_fractions</span><span class="p">([</span><span class="mf">0.001e-6</span><span class="p">,</span><span class="mf">1.0e-6</span><span class="p">,</span><span class="mf">2.e-6</span><span class="p">,</span><span class="mf">3.e-6</span><span class="p">]),</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;nmd&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="binning-of-modal-emissions">
+<span id="bins-emi-example"></span><h2>Binning of modal emissions<a class="headerlink" href="#binning-of-modal-emissions" title="Permalink to this headline">¶</a></h2>
+<p>Given one or more modes defined by a single lognormal or a multimodel lognormal, there
+are functions to recreate diagnostics given at modal-scheme on a bin-scheme.</p>
+<p>If we have a diagnostic <img class="math" src="_images/math/b554b7a451a570e3e9676a00ec90368467fd5426.png" alt="X(t,\phi,\zeta)"/> for a set of modes,
+<img class="math" src="_images/math/21e551ff4eef390ca04abe6a51aa5ac7562f88a9.png" alt="\{X_{m}(t,\phi,\zeta)\qquad m=1...M\}"/> we want to estimate the diagnostic,
+<img class="math" src="_images/math/7a0198f8243c45be5ce0e6153ad2957d187a5cb4.png" alt="X(t,\phi,\zeta; b)"/> with b a set of bins. Here we show an example for emissions</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># FULL EXAMPLE: Binning of emission fields of 4 dust modes of IPSL climate model.</span>
+
+<span class="n">a_sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">])</span>  <span class="c1"># array of sigmas</span>
+<span class="n">a_mmd</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">22.0</span><span class="p">])</span>  <span class="c1"># array of mass median diameter</span>
+<span class="n">a_mode</span>  <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;D1&#39;</span><span class="p">,</span><span class="s1">&#39;CI&#39;</span><span class="p">,</span><span class="s1">&#39;SI&#39;</span><span class="p">,</span><span class="s1">&#39;D4&#39;</span><span class="p">]</span>            <span class="c1"># name of the 4 modes of dust.</span>
+
+<span class="n">new_bins</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mf">300.0</span><span class="p">]</span>
+
+<span class="n">dic_fractions</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">mmd</span><span class="p">,</span> <span class="n">mode</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a_sigma</span><span class="p">,</span> <span class="n">a_mmd</span><span class="p">,</span> <span class="n">a_mode</span><span class="p">):</span>
+      <span class="n">fractions</span> <span class="o">=</span> <span class="n">ln</span><span class="o">.</span><span class="n">bin_fractions_lognormal</span><span class="p">(</span><span class="n">mmd</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">new_bins</span><span class="p">)</span>
+      <span class="n">dic_fractions</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span> <span class="o">=</span> <span class="n">fractions</span>
+
+<span class="n">dic_varname</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;D1&#39;</span><span class="p">:</span><span class="s1">&#39;emidustD1&#39;</span><span class="p">,</span><span class="s1">&#39;CI&#39;</span><span class="p">:</span><span class="s1">&#39;emidustCI&#39;</span><span class="p">,</span> <span class="s1">&#39;SI&#39;</span><span class="p">:</span><span class="s1">&#39;emidustSI&#39;</span><span class="p">,</span><span class="s1">&#39;D4&#39;</span><span class="p">:</span><span class="s1">&#39;emidustD4&#39;</span><span class="p">}</span>
+
+<span class="n">dic_ncnames</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;D1&#39;</span><span class="p">:</span><span class="s1">&#39;emidustD1_AERmon_IPSL-LMDZORINCAv6-r1i1p1f1_gr_20090101-20141231.nc&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;CI&#39;</span><span class="p">:</span><span class="s1">&#39;emidustCI_AERmon_IPSL-LMDZORINCAv6-r1i1p1f1_gr_20090101-20141231.nc&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;SI&#39;</span><span class="p">:</span><span class="s1">&#39;emidustSI_AERmon_IPSL-LMDZORINCAv6-r1i1p1f1_gr_20090101-20141231.nc&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;D4&#39;</span><span class="p">:</span><span class="s1">&#39;emidustD4_AERmon_IPSL-LMDZORINCAv6-r1i1p1f1_gr_20090101-20141231.nc&#39;</span>
+            <span class="p">}</span>
+
+<span class="n">f_area</span> <span class="o">=</span> <span class="s1">&#39;tests/area_grid.nc&#39;</span>
+<span class="n">vararea</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">f_area</span><span class="p">)[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span>
+
+<span class="n">test_emi</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;kind&#39;</span><span class="p">:</span><span class="s1">&#39;tendency&#39;</span><span class="p">,</span> <span class="s1">&#39;area&#39;</span><span class="p">:</span><span class="n">vararea</span><span class="p">,</span> <span class="s1">&#39;years&#39;</span><span class="p">:[</span><span class="s1">&#39;2010&#39;</span><span class="p">,</span><span class="s1">&#39;2011&#39;</span><span class="p">]}</span>
+
+<span class="n">ftestemi</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;check_emission_binning.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="n">dic_files</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;basedir&#39;</span><span class="p">:</span> <span class="s1">&#39;./tests&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;base_nc&#39;</span><span class="p">:</span> <span class="n">dic_ncnames</span><span class="p">[</span><span class="s1">&#39;D1&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;base_var&#39;</span><span class="p">:</span> <span class="s1">&#39;emidustD1&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;newf_nc&#39;</span><span class="p">:</span>  <span class="s1">&#39;emidust_BINNED.nc&#39;</span><span class="p">}</span>
+
+<span class="n">create_netcdf_2D_bins</span><span class="p">(</span><span class="n">dic_fractions</span><span class="p">,</span> <span class="n">dic_varname</span><span class="p">,</span> <span class="n">dic_ncnames</span><span class="p">,</span> <span class="n">a_mode</span><span class="p">,</span> <span class="n">new_bins</span><span class="p">,</span>
+                     <span class="n">dic_files</span><span class="p">,</span>  <span class="s1">&#39;emidust_bin&#39;</span><span class="p">,</span> <span class="n">ftest</span><span class="o">=</span><span class="n">ftestemi</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">test_info</span><span class="o">=</span><span class="n">test_emi</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># OUTPUT of check_emission_binning.txt ===================================</span>
+
+
+  <span class="o">==============</span> <span class="n">mode</span> <span class="n">contributions</span> <span class="o">======================================</span>
+  <span class="o">----</span> <span class="mi">2010</span> <span class="o">-----------------------</span>
+      <span class="n">Contribution</span> <span class="n">mode</span> <span class="n">D1</span> <span class="p">:</span>    <span class="mf">97.58</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>    <span class="mf">97.58</span>
+      <span class="n">Contribution</span> <span class="n">mode</span> <span class="n">CI</span> <span class="p">:</span>   <span class="mf">715.22</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>   <span class="mf">812.80</span>
+      <span class="n">Contribution</span> <span class="n">mode</span> <span class="n">SI</span> <span class="p">:</span>  <span class="mf">5274.96</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>  <span class="mf">6087.76</span>
+      <span class="n">Contribution</span> <span class="n">mode</span> <span class="n">D4</span> <span class="p">:</span> <span class="mf">10673.08</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">16760.84</span>
+      <span class="o">*</span><span class="n">Contribution</span> <span class="n">ALL</span> <span class="n">bins</span><span class="p">:</span>                       <span class="mf">16759.97</span>
+  <span class="o">----</span> <span class="mi">2011</span> <span class="o">-----------------------</span>
+      <span class="n">Contribution</span> <span class="n">mode</span> <span class="n">D1</span> <span class="p">:</span>    <span class="mf">88.92</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>    <span class="mf">88.92</span>
+      <span class="n">Contribution</span> <span class="n">mode</span> <span class="n">CI</span> <span class="p">:</span>   <span class="mf">651.81</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>   <span class="mf">740.73</span>
+      <span class="n">Contribution</span> <span class="n">mode</span> <span class="n">SI</span> <span class="p">:</span>  <span class="mf">4807.24</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>  <span class="mf">5547.97</span>
+      <span class="n">Contribution</span> <span class="n">mode</span> <span class="n">D4</span> <span class="p">:</span>  <span class="mf">9726.73</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">15274.70</span>
+      <span class="o">*</span><span class="n">Contribution</span> <span class="n">ALL</span> <span class="n">bins</span><span class="p">:</span>                       <span class="mf">15273.90</span>
+
+  <span class="o">==============</span>  <span class="n">bins</span> <span class="n">contributions</span> <span class="o">=====================================</span>
+  <span class="o">----</span> <span class="mi">2010</span> <span class="o">-----------------------</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>   <span class="mf">0.0</span><span class="p">,</span>    <span class="mf">0.2</span><span class="p">]</span> <span class="p">:</span>     <span class="mf">0.40</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>     <span class="mf">0.40</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>   <span class="mf">0.2</span><span class="p">,</span>    <span class="mf">2.0</span><span class="p">]</span> <span class="p">:</span>   <span class="mf">490.17</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>   <span class="mf">490.57</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>   <span class="mf">2.0</span><span class="p">,</span>    <span class="mf">3.6</span><span class="p">]</span> <span class="p">:</span>   <span class="mf">946.51</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>  <span class="mf">1437.08</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>   <span class="mf">3.6</span><span class="p">,</span>    <span class="mf">6.0</span><span class="p">]</span> <span class="p">:</span>  <span class="mf">1763.44</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>  <span class="mf">3200.52</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>   <span class="mf">6.0</span><span class="p">,</span>   <span class="mf">12.0</span><span class="p">]</span> <span class="p">:</span>  <span class="mf">3858.86</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>  <span class="mf">7059.37</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>  <span class="mf">12.0</span><span class="p">,</span>   <span class="mf">20.0</span><span class="p">]</span> <span class="p">:</span>  <span class="mf">3511.50</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">10570.87</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>  <span class="mf">20.0</span><span class="p">,</span>   <span class="mf">30.0</span><span class="p">]</span> <span class="p">:</span>  <span class="mf">2635.21</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">13206.08</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>  <span class="mf">30.0</span><span class="p">,</span>   <span class="mf">40.0</span><span class="p">]</span> <span class="p">:</span>  <span class="mf">1464.50</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">14670.57</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>  <span class="mf">40.0</span><span class="p">,</span>  <span class="mf">100.0</span><span class="p">]</span> <span class="p">:</span>  <span class="mf">1935.78</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">16606.36</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span> <span class="mf">100.0</span><span class="p">,</span>  <span class="mf">200.0</span><span class="p">]</span> <span class="p">:</span>   <span class="mf">146.74</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">16753.10</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span> <span class="mf">200.0</span><span class="p">,</span>  <span class="mf">300.0</span><span class="p">]</span> <span class="p">:</span>     <span class="mf">6.87</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">16759.97</span>
+      <span class="o">*</span><span class="n">Contribution</span> <span class="n">ALL</span> <span class="n">bins</span><span class="p">:</span>                                   <span class="mf">16759.97</span>
+  <span class="o">----</span> <span class="mi">2011</span> <span class="o">-----------------------</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>   <span class="mf">0.0</span><span class="p">,</span>    <span class="mf">0.2</span><span class="p">]</span> <span class="p">:</span>     <span class="mf">0.36</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>     <span class="mf">0.36</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>   <span class="mf">0.2</span><span class="p">,</span>    <span class="mf">2.0</span><span class="p">]</span> <span class="p">:</span>   <span class="mf">446.71</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>   <span class="mf">447.07</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>   <span class="mf">2.0</span><span class="p">,</span>    <span class="mf">3.6</span><span class="p">]</span> <span class="p">:</span>   <span class="mf">862.58</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>  <span class="mf">1309.66</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>   <span class="mf">3.6</span><span class="p">,</span>    <span class="mf">6.0</span><span class="p">]</span> <span class="p">:</span>  <span class="mf">1607.08</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>  <span class="mf">2916.73</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>   <span class="mf">6.0</span><span class="p">,</span>   <span class="mf">12.0</span><span class="p">]</span> <span class="p">:</span>  <span class="mf">3516.70</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>  <span class="mf">6433.44</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>  <span class="mf">12.0</span><span class="p">,</span>   <span class="mf">20.0</span><span class="p">]</span> <span class="p">:</span>  <span class="mf">3200.15</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span>  <span class="mf">9633.58</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>  <span class="mf">20.0</span><span class="p">,</span>   <span class="mf">30.0</span><span class="p">]</span> <span class="p">:</span>  <span class="mf">2401.55</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">12035.13</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>  <span class="mf">30.0</span><span class="p">,</span>   <span class="mf">40.0</span><span class="p">]</span> <span class="p">:</span>  <span class="mf">1334.64</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">13369.77</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span>  <span class="mf">40.0</span><span class="p">,</span>  <span class="mf">100.0</span><span class="p">]</span> <span class="p">:</span>  <span class="mf">1764.14</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">15133.91</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span> <span class="mf">100.0</span><span class="p">,</span>  <span class="mf">200.0</span><span class="p">]</span> <span class="p">:</span>   <span class="mf">133.73</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">15267.64</span>
+      <span class="n">Contribution</span> <span class="nb">bin</span> <span class="p">[</span> <span class="mf">200.0</span><span class="p">,</span>  <span class="mf">300.0</span><span class="p">]</span> <span class="p">:</span>     <span class="mf">6.26</span>   <span class="o">|&gt;</span> <span class="n">accum</span> <span class="o">=</span> <span class="mf">15273.90</span>
+      <span class="o">*</span><span class="n">Contribution</span> <span class="n">ALL</span> <span class="n">bins</span><span class="p">:</span>                                   <span class="mf">15273.90</span>
+
+  <span class="o">========================================================================</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="references.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="set_functions.html" class="btn btn-neutral float-left" title="Set of Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Ramiro Checa-Garcia
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
