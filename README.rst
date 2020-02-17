@@ -8,6 +8,7 @@ FunFAN: FUNCtions For Aerosol Modelling
 :Date: 2020-01-01
 :Version: 1.0
 
+
 .. index: README
 
 .. contents::
@@ -27,6 +28,11 @@ specific goal is described, as well as its requirements in terms of
 external libraries.
 
 One of the goals is that the set of functions increase over time.
+
+Please if you use this software cite it as:
+
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.3672001.svg
+   :target: https://doi.org/10.5281/zenodo.3672001
 
 Documentation
 =============
