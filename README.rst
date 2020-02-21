@@ -7,11 +7,12 @@ FunFAN: set of functions for aerosols studies
 :License: GPLv3 (GNU General Public License version 3)
 :Date: 2020-01-01
 :Version: 1.0
-
+:Documentation: `ReadTheDocs-FunFAN <https://funfan.readthedocs.io/en/latest/>`_
 
 .. index: README
 
 .. contents::
+
 
 Info and Motivation
 =====================
@@ -39,6 +40,11 @@ Documentation
 
 **FunFAN** has been documented with Sphinx, therefore if you download it,
 you can open the documentation (at docs/build/html/index.html) with any web-browser
+
+Also you can see online at `ReadTheDocs-FunFAN <https://funfan.readthedocs.io/en/latest/>`_
+
+
+
 
 
 
