@@ -2,7 +2,7 @@
 FunFAN: set of functions for aerosols studies
 =================================================================
 
-:Info: This is a set of modules and **fun**\ ctions used **F**\or **A**\ erosols studies. Designed for **climate** analysis and mainly programmed in Python.
+:Info: This is a set of modules and **fun**\ ctions used **F**\or **A**\ erosols studies.
 :Author: Ramiro Checa-Garcia
 :License: GPLv3 (GNU General Public License version 3)
 :Date: 2020-01-01
