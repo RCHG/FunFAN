@@ -1,1 +1,6 @@
 sphinxcontrib-bibtex
+pybtex>=0.20
+pybtex-docutils>=0.2.2
+Sphinx>=1.8
+oset>=0.1.3
+
