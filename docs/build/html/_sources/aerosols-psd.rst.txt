@@ -7,7 +7,6 @@
 Examples aerosols-psd
 ---------------------
 
-
 .. _ln_example:
 
 Lognormal distribution
@@ -33,7 +32,7 @@ Two know more about lognormal distributions for aerosols :cite:`Heintzenberg_199
 :cite:`checagarcia2013measurement`
 
 
-.. code-block::
+::
  
    # =======================================================================
    # Typical output 
@@ -62,7 +61,7 @@ family of distributions related with an specific logormal mode. It shows
 can reconstruct this object by using mmd or nmd.  
 
 
-.. code-block::
+.. code-block:: python
 
    # ======= EXAMPLE of how to use (piece of code, not in REPL)
    #

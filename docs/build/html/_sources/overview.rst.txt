@@ -4,7 +4,7 @@ Overview
 ====================
 
 This is set of modules and **fun**\ ctions in **P**\ ython used for the
-analysis of **A**\ erosols in **C**\ limate models. Rather than a full package 
+analysis of **A**\ erosols in climate models. Rather than a full package 
 that constrains to the user to adopt an specific work-flow, the
 idea is to provide functions that can be implemented in other projects
 with minimal changes. The common shared set of functions would help
@@ -30,10 +30,8 @@ Acknowledgements
 ----------------
 
 - *Jasper Kok* for fostering discussions about binning.
-- *Yves Balkanski* for providing excel files to test several calculations.
-
-
-
+- *Yves Balkanski* for providing excel files to test several calculations (of lognormals)
+- *Andre Butz* for discussion about Mie scattering in the context of remote sensing of GHGs.
 
 
 

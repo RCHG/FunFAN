@@ -8,7 +8,6 @@ FunFAN: FUNCtions For Aerosol Modelling
 :Date: 2020-01-01
 :Version: 1.0
 
-
 .. index: README
 
 .. contents::
@@ -39,6 +38,5 @@ Documentation
 
 **FunFAN** has been documented with Sphinx, therefore if you download it,
 you can open the documentation (at docs/build/html/index.html) with any web-browser
-
 
 

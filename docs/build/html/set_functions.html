@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Set of Functions &mdash; FunFAM 1.0 documentation</title>
+  <title>Set of Functions &mdash; FunFAN 1.0 documentation</title>
   
 
   
@@ -51,7 +51,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> FunFAM
+            <a href="index.html" class="icon icon-home"> FunFAN
           
 
           
@@ -85,9 +85,11 @@
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Set of Functions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#particle-size-distributions-aersols-psd">Particle size distributions (aersols_psd)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mie-scattering-pymie-core">Mie Scattering (pymie_core)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="aerosols-psd.html">Examples aerosols-psd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mie-scatt.html">Examples mie-scattering (pymie_core)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="myindex.html">Index</a></li>
@@ -105,7 +107,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">FunFAM</a>
+          <a href="index.html">FunFAN</a>
         
       </nav>
 
@@ -160,12 +162,12 @@
 <div class="section" id="particle-size-distributions-aersols-psd">
 <h2>Particle size distributions (aersols_psd)<a class="headerlink" href="#particle-size-distributions-aersols-psd" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p><em>Author</em> R. Checa-Garcia</p></li>
-<li><p><em>License</em> GPLv3 (GNU General Public License version 3)</p></li>
-<li><p><em>Date</em> 2020-01-01 (last update see github)</p></li>
-<li><p><em>Other requirements</em> <a class="reference external" href="http://xarray.pydata.org">xarray</a> , <a class="reference external" href="https://matplotlib.org/">matplotlib</a></p></li>
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li><em>Author</em> R. Checa-Garcia</li>
+<li><em>License</em> GPLv3 (GNU General Public License version 3)</li>
+<li><em>Date</em> 2020-01-01 (last update see github)</li>
+<li><em>Other requirements</em> <a class="reference external" href="http://xarray.pydata.org">xarray</a> , <a class="reference external" href="https://matplotlib.org/">matplotlib</a></li>
 </ul>
 </div>
 <p>Set of functions to get <strong>statistics</strong> information of the modal particle size distributions,
@@ -173,21 +175,73 @@ create <strong>plots</strong> (using <a class="reference external" href="https:/
 To manage the netCDF files for binning methods, it is used the library <a class="reference external" href="http://xarray.pydata.org">xarray</a></p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Log-normal distribution</p></li>
-<li><p>Binning of (time, lat, lon) fields. Tests for tendency fluxes (emissions, dry and wet deposition)</p></li>
+<li>Log-normal distribution</li>
+<li>Binning of (time, lat, lon) fields. Tests for tendency fluxes (emissions, dry and wet deposition)</li>
 </ul>
 </div></blockquote>
 <div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<ul>
-<li><p>Examples <a class="reference internal" href="aerosols-psd.html#ln-example"><span class="std std-ref">Lognormal distribution</span></a></p></li>
-<li><p>Examples <a class="reference internal" href="aerosols-psd.html#bins-emi-example"><span class="std std-ref">Binning of modal emissions</span></a></p></li>
-<li><p>Tests</p>
+<p class="first admonition-title">See also</p>
+<ul class="last">
+<li><p class="first">Examples <a class="reference internal" href="aerosols-psd.html#ln-example"><span class="std std-ref">Lognormal distribution</span></a></p>
+</li>
+<li><p class="first">Examples <a class="reference internal" href="aerosols-psd.html#bins-emi-example"><span class="std std-ref">Binning of modal emissions</span></a></p>
+</li>
+<li><p class="first">Tests</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>If you run <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">lognormal.py</span></code> the code perform several unittests.</p></li>
-<li><p>The code for bins has been tests, the example is at the code.</p></li>
-<li><p>There are few private methods (not in documentation but in the code) with examples/tests.</p></li>
+<li>If you run <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">lognormal.py</span></code> the code perform several unittests.</li>
+<li>The code for bins has been tests, the example is at the code.</li>
+<li>There are few private methods (not in documentation but in the code) with examples/tests.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mie-scattering-pymie-core">
+<h2>Mie Scattering (pymie_core)<a class="headerlink" href="#mie-scattering-pymie-core" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><em>Author</em> R. Checa-Garcia</li>
+<li><em>License</em> GPLv3 (GNU General Public License version 3)</li>
+<li><em>Date</em> 2014-11-10</li>
+<li><em>Other requirements</em> none</li>
+</ul>
+</div></blockquote>
+<p>Set of function to calculate mie scattering properties of spheres. It also possible to
+estimate for a distribution of spheres given the frecuency per size bin.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Outputs:<ul>
+<li>Scattering matrix elements F11, F12, F33, and F34</li>
+<li>Extinction effiency factor         (Qext)</li>
+<li>Extinction cross section           (Cext)</li>
+<li>Scattering effiency factor         (Qsca)</li>
+<li>Scattering cross section           (Csca)</li>
+<li>Absorption effiency factor         (Qabs)</li>
+<li>Absorption cross section           (Cabs)</li>
+<li>Backscattering effiency factor     (Qbk)</li>
+<li>Backscattering cross section       (Cbk)</li>
+<li>Radiation pressure effiency factor (Qpr)</li>
+<li>Single scattering albedo           (albe)</li>
+<li>Scattering asymetry factor         (g)</li>
+</ul>
+</li>
+<li>Inputs:<ul>
+<li>Optical Information: complex refraction index</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last">
+<li><p class="first">Examples <a class="reference internal" href="mie-scatt.html#example-pymie"><span class="std std-ref">Basic example</span></a></p>
+</li>
+<li><p class="first">Tests</p>
+<blockquote>
+<div><ul class="simple">
+<li>If you run <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">pymie_core.py</span></code> the code perform several unittests.</li>
 </ul>
 </div></blockquote>
 </li>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview &mdash; FunFAM 1.0 documentation</title>
+  <title>Overview &mdash; FunFAN 1.0 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Set of Functions" href="set_functions.html" />
-    <link rel="prev" title="FunFAM: FUNctions in For Aerosols Modeling" href="index.html" /> 
+    <link rel="prev" title="FunFAN: set of functions for aerosols studies" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -51,7 +51,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> FunFAM
+            <a href="index.html" class="icon icon-home"> FunFAN
           
 
           
@@ -89,6 +89,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="set_functions.html">Set of Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aerosols-psd.html">Examples aerosols-psd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mie-scatt.html">Examples mie-scattering (pymie_core)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="myindex.html">Index</a></li>
@@ -106,7 +107,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">FunFAM</a>
+          <a href="index.html">FunFAN</a>
         
       </nav>
 
@@ -159,7 +160,7 @@
   <div class="section" id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
 <p>This is set of modules and <strong>fun</strong>ctions in <strong>P</strong>ython used for the
-analysis of <strong>A</strong>erosols in <strong>C</strong>limate models. Rather than a full package
+analysis of <strong>A</strong>erosols in climate models. Rather than a full package
 that constrains to the user to adopt an specific work-flow, the
 idea is to provide functions that can be implemented in other projects
 with minimal changes. The common shared set of functions would help
@@ -171,17 +172,18 @@ external libraries.</p>
 <h2>General requirements<a class="headerlink" href="#general-requirements" title="Permalink to this headline">¶</a></h2>
 <p>Common set requirements to all different functions:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3</span></code>  it is based on python 3 (not python 2 syntax).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> for manage of numerical and masked arrays.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scipy</span></code> for special functions and statistics methods.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">os</span></code>    library to manage file-system access with python.</p></li>
+<li><code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3</span></code>  it is based on python 3 (not python 2 syntax).</li>
+<li><code class="docutils literal notranslate"><span class="pre">numpy</span></code> for manage of numerical and masked arrays.</li>
+<li><code class="docutils literal notranslate"><span class="pre">scipy</span></code> for special functions and statistics methods.</li>
+<li><code class="docutils literal notranslate"><span class="pre">os</span></code>    library to manage file-system access with python.</li>
 </ul>
 </div>
 <div class="section" id="acknowledgements">
 <h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><em>Jasper Kok</em> for fostering discussions about binning.</p></li>
-<li><p><em>Yves Balkanski</em> for providing excel files to test several calculations.</p></li>
+<li><em>Jasper Kok</em> for fostering discussions about binning.</li>
+<li><em>Yves Balkanski</em> for providing excel files to test several calculations (of lognormals)</li>
+<li><em>Andre Butz</em> for discussion about Mie scattering in the context of remote sensing of GHGs.</li>
 </ul>
 </div>
 </div>
@@ -197,7 +199,7 @@ external libraries.</p>
         <a href="set_functions.html" class="btn btn-neutral float-right" title="Set of Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="FunFAM: FUNctions in For Aerosols Modeling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="FunFAN: set of functions for aerosols studies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

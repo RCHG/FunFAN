@@ -1,11 +1,11 @@
 
 
-FunFAM: FUNctions in For Aerosol Modelling
-==========================================
+FunFAN: set of functions for aerosols studies
+==============================================
 
 
-This is set of modules and **fun**\ ctions used **f**\or **A**\ erosol **M**\ odelling.
-Mainly for climate modelling and mainly programmed in Python.
+This is set of modules and **fun**\ ctions used **f**\or **A**\ erosol in climate modelling.
+Mainly programmed in Python.
 Rather than a full package  that constrains to the user to adopt an specific work-flow, the
 idea is to provide functions that can be implemented in other projects
 with minimal changes. The common shared set of functions would help
@@ -25,6 +25,7 @@ Documentation
    overview
    set_functions
    aerosols-psd
+   mie-scatt
    references
    api
    myindex

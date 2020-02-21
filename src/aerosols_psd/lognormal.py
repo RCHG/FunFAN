@@ -8,9 +8,9 @@
    |   - Jan-2020   v1.0     Initial version. Contact: R.Checa
 """
 
-import xarray as xr
 import numpy as np
 from scipy.special import erf
+import xarray as xr
 import unittest
 
 def Xpdf_logD(D, lnmu, lnsigma):
@@ -142,7 +142,7 @@ def stats_lognormal_mode(sigma, mmd, name, rhop=2650.0, n_conc=7.e6, show=True):
     Returns:
         out (list): list with several statistics asociated to lognormal distr.
 
-    .. testcode::
+    .. testcode:: python
 
        # =======================================================================
        # Typical output 
@@ -249,7 +249,7 @@ class lnmode(object):
         ini_dict (dict): Dictionary with the main information to be used in the lognormal mode. It is mandatory that this dataset has the information indicated above.
 
 
-    .. testcode::
+    .. testcode:: python
 
         # ======= EXAMPLE of how to use (piece of code, not in REPL)
         #
@@ -403,7 +403,7 @@ def _check_pdf_cdf(dmin, dmax, lnmu, lnsigma, str1='n', show=True):
 
 class Test(unittest.TestCase):
 
-    def _test_info_lognormal(self):
+    def test_info_lognormal(self):
         test = stats_lognormal_mode(1.8, 1e-6, 'D1', rhop=2650.0, n_conc=7.e6)
         (sigma, mmd, nmd, smd, smd_bis, reff_n, reff_v, reff_m, mmeand, nmoded, d_avgm, a_conc, v_conc, m_conc) = test
         self.assertEqual(       sigma  ,  1.8 )

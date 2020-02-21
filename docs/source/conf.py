@@ -19,16 +19,12 @@ sys.path.insert(0, os.path.abspath('../../src/'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'FunFAM'
+project = 'FunFAN'
 copyright = '2020, Ramiro Checa-Garcia'
 author = 'Ramiro Checa-Garcia'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0'
-
-
-
-
 
 # -- General configuration ---------------------------------------------------
 
@@ -76,7 +72,7 @@ html_static_path = ['_static']
 # -- Options for LaTeX output ------------------------------------------------
 
 
-#master_doc = "index"
+master_doc = "index"
 
 #LATEX_STYLING = "_static/latex-styles.tex"
 #try:

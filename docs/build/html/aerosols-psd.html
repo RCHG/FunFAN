@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Examples aerosols-psd &mdash; FunFAM 1.0 documentation</title>
+  <title>Examples aerosols-psd &mdash; FunFAN 1.0 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="References" href="references.html" />
+    <link rel="next" title="Examples mie-scattering (pymie_core)" href="mie-scatt.html" />
     <link rel="prev" title="Set of Functions" href="set_functions.html" /> 
 </head>
 
@@ -51,7 +51,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> FunFAM
+            <a href="index.html" class="icon icon-home"> FunFAN
           
 
           
@@ -89,6 +89,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#binning-of-modal-emissions">Binning of modal emissions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="mie-scatt.html">Examples mie-scattering (pymie_core)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="myindex.html">Index</a></li>
@@ -106,7 +107,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">FunFAM</a>
+          <a href="index.html">FunFAN</a>
         
       </nav>
 
@@ -166,16 +167,16 @@ aerosols when the functional form follows a lognormal distribution.</p>
 that the number of particles with diameter between D and D+dD is n(D),
 a lognormal distribution. Then there is a set of related distributions
 with this number distribution describing the area, volume, mass distribution
-with size. All of them are described by a value of mean <img class="math" src="_images/math/4a3598141469c2555591e66606a1b86d4ec6dca9.png" alt="\mu"/>, plus an standard
-deviation <img class="math" src="_images/math/b52df27bfb0b1e3af0c2c68a7b9da459178c2a7d.png" alt="\sigma"/>. These means are the number median diameter (nmd), the
+with size. All of them are described by a value of mean <img class="math" src="_images/math/d79e8a2c7ce54906c2b25549da38bdbe02cf40d6.png" alt="\mu"/>, plus an standard
+deviation <img class="math" src="_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/>. These means are the number median diameter (nmd), the
 surface median diameter (smd) and the mass median diameter (mmd), given one of these
-typical diameters and <img class="math" src="_images/math/b52df27bfb0b1e3af0c2c68a7b9da459178c2a7d.png" alt="\sigma"/>, we can obtain all other diameters
+typical diameters and <img class="math" src="_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/>, we can obtain all other diameters
 and several properties of the <em>families of distributions</em>. For this
 it is useful the functions are <code class="docutils literal notranslate"><span class="pre">lognormal.py</span></code>. Here is how to show
-these values given <img class="math" src="_images/math/b52df27bfb0b1e3af0c2c68a7b9da459178c2a7d.png" alt="\sigma"/> and mmd.</p>
-<p>Two know more about lognormal distributions for aerosols <a class="bibtex reference internal" href="references.html#heintzenberg-1994" id="id1">[Hei94]</a>
-<a class="bibtex reference internal" href="references.html#grainger-2017" id="id2">[Gra17]</a>. For aerosols and also particle distributions <a class="bibtex reference internal" href="references.html#zender-2002" id="id3">[Zen02]</a>
-<a class="bibtex reference internal" href="references.html#checagarcia2013measurement" id="id4">[CG13]</a></p>
+these values given <img class="math" src="_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/> and mmd.</p>
+<p>Two know more about lognormal distributions for aerosols <a class="reference internal" href="references.html#heintzenberg-1994" id="id1">[Hei94]</a>
+<a class="reference internal" href="references.html#grainger-2017" id="id2">[Gra17]</a>. For aerosols and also particle distributions <a class="reference internal" href="references.html#zender-2002" id="id3">[Zen02]</a>
+<a class="reference internal" href="references.html#checagarcia2013measurement" id="id4">[CG13]</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># =======================================================================
 # Typical output
 #
@@ -202,7 +203,7 @@ all others without symbols mean calculated
 <p>Here is also implemented an object named <code class="docutils literal notranslate"><span class="pre">lnmode</span></code> that allows to define this
 family of distributions related with an specific logormal mode. It shows
 can reconstruct this object by using mmd or nmd.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======= EXAMPLE of how to use (piece of code, not in REPL)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ======= EXAMPLE of how to use (piece of code, not in REPL)</span>
 <span class="c1">#</span>
 <span class="c1"># (1) Create/Define the object here a lnmode named lnD1</span>
 <span class="n">lnD1</span> <span class="o">=</span> <span class="n">lnmode</span><span class="p">({</span><span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">,</span> <span class="s1">&#39;mmd&#39;</span><span class="p">:</span><span class="mf">1.e-6</span><span class="p">,</span> <span class="s1">&#39;n_conc&#39;</span><span class="p">:</span><span class="mf">7e-6</span><span class="p">,</span> <span class="s1">&#39;rhop&#39;</span><span class="p">:</span><span class="mf">2650.0</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;D1&#39;</span><span class="p">})</span>
@@ -211,10 +212,10 @@ can reconstruct this object by using mmd or nmd.</p>
 <span class="n">lnD1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># (3) Estimate the bin fractions for that distribution for mass distribution</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lnD1</span><span class="o">.</span><span class="n">bin_fractions</span><span class="p">([</span><span class="mf">0.001e-6</span><span class="p">,</span><span class="mf">1.0e-6</span><span class="p">,</span><span class="mf">2.e-6</span><span class="p">,</span><span class="mf">3.e-6</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lnD1</span><span class="o">.</span><span class="n">bin_fractions</span><span class="p">([</span><span class="mf">0.001e-6</span><span class="p">,</span><span class="mf">1.0e-6</span><span class="p">,</span><span class="mf">2.e-6</span><span class="p">,</span><span class="mf">3.e-6</span><span class="p">]))</span>
 
 <span class="c1"># (4) Estimate the bin fractions for that distribution for number distribution</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lnD1</span><span class="o">.</span><span class="n">bin_fractions</span><span class="p">([</span><span class="mf">0.001e-6</span><span class="p">,</span><span class="mf">1.0e-6</span><span class="p">,</span><span class="mf">2.e-6</span><span class="p">,</span><span class="mf">3.e-6</span><span class="p">]),</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;nmd&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lnD1</span><span class="o">.</span><span class="n">bin_fractions</span><span class="p">([</span><span class="mf">0.001e-6</span><span class="p">,</span><span class="mf">1.0e-6</span><span class="p">,</span><span class="mf">2.e-6</span><span class="p">,</span><span class="mf">3.e-6</span><span class="p">]),</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;nmd&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -222,9 +223,9 @@ can reconstruct this object by using mmd or nmd.</p>
 <span id="bins-emi-example"></span><h2>Binning of modal emissions<a class="headerlink" href="#binning-of-modal-emissions" title="Permalink to this headline">¶</a></h2>
 <p>Given one or more modes defined by a single lognormal or a multimodel lognormal, there
 are functions to recreate diagnostics given at modal-scheme on a bin-scheme.</p>
-<p>If we have a diagnostic <img class="math" src="_images/math/b554b7a451a570e3e9676a00ec90368467fd5426.png" alt="X(t,\phi,\zeta)"/> for a set of modes,
-<img class="math" src="_images/math/21e551ff4eef390ca04abe6a51aa5ac7562f88a9.png" alt="\{X_{m}(t,\phi,\zeta)\qquad m=1...M\}"/> we want to estimate the diagnostic,
-<img class="math" src="_images/math/7a0198f8243c45be5ce0e6153ad2957d187a5cb4.png" alt="X(t,\phi,\zeta; b)"/> with b a set of bins. Here we show an example for emissions</p>
+<p>If we have a diagnostic <img class="math" src="_images/math/94cb1bd67b56271483d5c6516d09d204a85cdad0.png" alt="X(t,\phi,\zeta)"/> for a set of modes,
+<img class="math" src="_images/math/1f9f3bbef4f1bc80e7250c969da40d4b3d80b942.png" alt="\{X_{m}(t,\phi,\zeta)\qquad m=1...M\}"/> we want to estimate the diagnostic,
+<img class="math" src="_images/math/102ba3d1bcb0f7c8baac9ecff89890532a849cf4.png" alt="X(t,\phi,\zeta; b)"/> with b a set of bins. Here we show an example for emissions</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># FULL EXAMPLE: Binning of emission fields of 4 dust modes of IPSL climate model.</span>
 
 <span class="n">a_sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">])</span>  <span class="c1"># array of sigmas</span>
@@ -260,7 +261,7 @@ are functions to recreate diagnostics given at modal-scheme on a bin-scheme.</p>
             <span class="s1">&#39;newf_nc&#39;</span><span class="p">:</span>  <span class="s1">&#39;emidust_BINNED.nc&#39;</span><span class="p">}</span>
 
 <span class="n">create_netcdf_2D_bins</span><span class="p">(</span><span class="n">dic_fractions</span><span class="p">,</span> <span class="n">dic_varname</span><span class="p">,</span> <span class="n">dic_ncnames</span><span class="p">,</span> <span class="n">a_mode</span><span class="p">,</span> <span class="n">new_bins</span><span class="p">,</span>
-                     <span class="n">dic_files</span><span class="p">,</span>  <span class="s1">&#39;emidust_bin&#39;</span><span class="p">,</span> <span class="n">ftest</span><span class="o">=</span><span class="n">ftestemi</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">dic_files</span><span class="p">,</span>  <span class="s1">&#39;emidust_bin&#39;</span><span class="p">,</span> <span class="n">ftest</span><span class="o">=</span><span class="n">ftestemi</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                      <span class="n">test_info</span><span class="o">=</span><span class="n">test_emi</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -323,7 +324,7 @@ are functions to recreate diagnostics given at modal-scheme on a bin-scheme.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="references.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mie-scatt.html" class="btn btn-neutral float-right" title="Examples mie-scattering (pymie_core)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="set_functions.html" class="btn btn-neutral float-left" title="Set of Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -30,5 +30,12 @@ Binning of modal based climate diagnostics
    :members:
    :undoc-members:
 
+Mie Scattering Spheres
+-------------------------------------------
+
+.. automodule:: mie_scattering.pymie_core
+   :members:
+   :undoc-members:
+
 
 

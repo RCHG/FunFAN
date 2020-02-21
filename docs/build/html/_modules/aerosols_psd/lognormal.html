@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>aerosols_psd.lognormal &mdash; FunFAM 1.0 documentation</title>
+  <title>aerosols_psd.lognormal &mdash; FunFAN 1.0 documentation</title>
   
 
   
@@ -49,7 +49,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> FunFAM
+            <a href="../../index.html" class="icon icon-home"> FunFAN
           
 
           
@@ -83,6 +83,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../set_functions.html">Set of Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../aerosols-psd.html">Examples aerosols-psd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mie-scatt.html">Examples pymie_core</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../myindex.html">Index</a></li>
@@ -100,7 +101,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">FunFAM</a>
+          <a href="../../index.html">FunFAN</a>
         
       </nav>
 
@@ -159,9 +160,9 @@
 <span class="sd">   |   - Jan-2020   v1.0     Initial version. Contact: R.Checa</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="k">import</span> <span class="n">erf</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">unittest</span>
 
 <div class="viewcode-block" id="Xpdf_logD"><a class="viewcode-back" href="../../api.html#aerosols_psd.lognormal.Xpdf_logD">[docs]</a><span class="k">def</span> <span class="nf">Xpdf_logD</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">lnmu</span><span class="p">,</span> <span class="n">lnsigma</span><span class="p">):</span>
@@ -293,7 +294,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        out (list): list with several statistics asociated to lognormal distr.</span>
 
-<span class="sd">    .. testcode::</span>
+<span class="sd">    .. testcode:: python</span>
 
 <span class="sd">       # =======================================================================</span>
 <span class="sd">       # Typical output </span>
@@ -400,7 +401,7 @@
 <span class="sd">        ini_dict (dict): Dictionary with the main information to be used in the lognormal mode. It is mandatory that this dataset has the information indicated above.</span>
 
 
-<span class="sd">    .. testcode::</span>
+<span class="sd">    .. testcode:: python</span>
 
 <span class="sd">        # ======= EXAMPLE of how to use (piece of code, not in REPL)</span>
 <span class="sd">        #</span>
@@ -418,7 +419,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ini_dict</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ini_dict</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="n">ini_dict</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_conc</span> <span class="o">=</span> <span class="n">ini_dict</span><span class="p">[</span><span class="s1">&#39;n_conc&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">ini_dict</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
@@ -554,7 +555,7 @@
 
 <div class="viewcode-block" id="Test"><a class="viewcode-back" href="../../api.html#aerosols_psd.lognormal.Test">[docs]</a><span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">_test_info_lognormal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Test.test_info_lognormal"><a class="viewcode-back" href="../../api.html#aerosols_psd.lognormal.Test.test_info_lognormal">[docs]</a>    <span class="k">def</span> <span class="nf">test_info_lognormal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">test</span> <span class="o">=</span> <span class="n">stats_lognormal_mode</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="s1">&#39;D1&#39;</span><span class="p">,</span> <span class="n">rhop</span><span class="o">=</span><span class="mf">2650.0</span><span class="p">,</span> <span class="n">n_conc</span><span class="o">=</span><span class="mf">7.e6</span><span class="p">)</span>
         <span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mmd</span><span class="p">,</span> <span class="n">nmd</span><span class="p">,</span> <span class="n">smd</span><span class="p">,</span> <span class="n">smd_bis</span><span class="p">,</span> <span class="n">reff_n</span><span class="p">,</span> <span class="n">reff_v</span><span class="p">,</span> <span class="n">reff_m</span><span class="p">,</span> <span class="n">mmeand</span><span class="p">,</span> <span class="n">nmoded</span><span class="p">,</span> <span class="n">d_avgm</span><span class="p">,</span> <span class="n">a_conc</span><span class="p">,</span> <span class="n">v_conc</span><span class="p">,</span> <span class="n">m_conc</span><span class="p">)</span> <span class="o">=</span> <span class="n">test</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span>       <span class="n">sigma</span>  <span class="p">,</span>  <span class="mf">1.8</span> <span class="p">)</span>
@@ -570,7 +571,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">assertAlmostEqual</span><span class="p">(</span> <span class="n">d_avgm</span> <span class="p">,</span>  <span class="mf">5.96e-7</span> <span class="p">,</span><span class="mi">9</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertAlmostEqual</span><span class="p">(</span> <span class="n">a_conc</span> <span class="p">,</span>  <span class="mf">4.65e-6</span> <span class="p">,</span><span class="mi">8</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertAlmostEqual</span><span class="p">(</span> <span class="n">m_conc</span> <span class="p">,</span>  <span class="mf">2.05e-9</span> <span class="p">,</span><span class="mi">11</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertAlmostEqual</span><span class="p">(</span> <span class="n">v_conc</span> <span class="p">,</span>  <span class="mf">7.74e-13</span><span class="p">,</span><span class="mi">14</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertAlmostEqual</span><span class="p">(</span> <span class="n">v_conc</span> <span class="p">,</span>  <span class="mf">7.74e-13</span><span class="p">,</span><span class="mi">14</span><span class="p">)</span></div></div>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
