@@ -45,6 +45,7 @@ you can open the documentation (at docs/build/html/index.html) with any web-brow
 Also you can see online at `ReadTheDocs-FunFAN <https://funfan.readthedocs.io/en/latest/>`_
 
 .. |doc_flat_Badge| image:: https://readthedocs.org/projects/pip/badge/?version=latest&style=flat
+                    :target: https://funfan.readthedocs.io/en/latest/
 .. |cite-link| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.3672001.svg
                :target: https://doi.org/10.5281/zenodo.3672001
 
