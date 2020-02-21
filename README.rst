@@ -7,7 +7,8 @@ FunFAN: set of functions for aerosols studies
 :License: GPLv3 (GNU General Public License version 3)
 :Date: 2020-01-01
 :Version: 1.0
-:Documentation: `ReadTheDocs-FunFAN <https://funfan.readthedocs.io/en/latest/>`_
+:Documentation: |doc_flat_Badge|
+:Cite as: |cite-link|
 
 .. index: README
 
@@ -43,7 +44,9 @@ you can open the documentation (at docs/build/html/index.html) with any web-brow
 
 Also you can see online at `ReadTheDocs-FunFAN <https://funfan.readthedocs.io/en/latest/>`_
 
-
+.. |doc_flat_Badge| image:: https://readthedocs.org/projects/pip/badge/?version=latest&style=flat
+.. |cite-link| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.3672001.svg
+               :target: https://doi.org/10.5281/zenodo.3672001
 
 
 
