@@ -23,7 +23,4 @@ python:
   install:
     - requirements: docs/requirements.txt
 
-conda:
-    environment: docs/conda/environment.yml
-
 
