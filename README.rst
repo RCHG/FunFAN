@@ -1,12 +1,13 @@
 =================================================================
-FunFAN: FUNCtions For Aerosol Modelling
+FunFAN: set of functions for aerosols studies
 =================================================================
 
-:Info: This is set of modules and **fun**\ ctions used **f**\or **A**\ erosol **M**\ odelling. Mainly for climate modelling and mainly programmed in Python.
+:Info: This is a set of modules and **fun**\ ctions used **F**\or **A**\ erosols studies. Designed for **climate** analysis and mainly programmed in Python.
 :Author: Ramiro Checa-Garcia
 :License: GPLv3 (GNU General Public License version 3)
 :Date: 2020-01-01
 :Version: 1.0
+
 
 .. index: README
 
@@ -38,5 +39,7 @@ Documentation
 
 **FunFAN** has been documented with Sphinx, therefore if you download it,
 you can open the documentation (at docs/build/html/index.html) with any web-browser
+
+
 
 
