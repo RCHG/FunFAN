@@ -38,7 +38,7 @@ To manage the netCDF files for binning methods, it is used the library xarray_
    - Tests
    
          - If you run ``python3 lognormal.py`` the code perform several unittests.
-         - The code for bins has been tests, the example is at the code.
+         - The code for bins has several tests, the example is also at the code.
          - There are few private methods (not in documentation but in the code) with examples/tests.
 
 
