@@ -19,11 +19,12 @@ Info and Motivation
 =====================
 
 This is set of modules and functions in python used for the
-analysis of aerosols in climate models. Rather than a full package 
-that constrains to the user to adopt an specific work-flow, the
-idea is to provide functions that can be implemented in other projects
-with minimal changes. The common shared set of functions would help
-to improve the reproducibility of our scientific results.
+analysis of aerosols in climate models or weather prediction models.
+Rather than a full package that constrains to the user to adopt an 
+specific work-flow, the idea is to provide functions that can be 
+implemented in other projects with minimal changes. The common 
+shared set of functions would help to improve the reproducibility 
+of our scientific results.
 
 The package or set of functions is organized in folders where the
 specific goal is described, as well as its requirements in terms of
